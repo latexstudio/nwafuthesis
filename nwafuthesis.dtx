@@ -1,0 +1,3149 @@
+% \iffalse meta-comment
+% !TEX program  = XeLaTeX
+% !TEX encoding = UTF-8
+%<*internal>
+\iffalse
+%</internal>
+%<*internal>
+\fi
+\def\nameofplainTeX{plain}
+\ifx\fmtname\nameofplainTeX\else
+  \expandafter\begingroup
+\fi
+%</internal>
+%<*install>
+\input docstrip.tex
+\askforoverwritefalse
+\preamble
+----------------------------------------------------------------
+nwafuthesis --- Thesis Template for Norhtwest A & F University
+Licensed under the Apache License, Version 2.0
+See http://www.apache.org/licenses/LICENSE-2.0
+----------------------------------------------------------------
+
+\endpreamble
+\postamble
+
+Copyright (C) 2019 by nangeng
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+This work consists of the file  nwafuthesis.dtx
+and the derived files           nwafuthesis.ins,
+                                nwafuthesis.cls,
+                                nwafuthesis.cfg and
+                                nwafuthesis.pdf
+
+\endpostamble
+\usedir{tex/latex/nwafuthesis}
+\generate{
+  \file{nwafuthesis.cls}{\from{\jobname.dtx}{cls}}
+  \file{nwafuthesis.cfg}{\from{\jobname.dtx}{cfg}}
+}
+%</install>
+%<install>\endbatchfile
+%<*internal>
+\usedir{source/latex/nwafuthesis}
+\generate{
+  \file{\jobname.ins}{\from{\jobname.dtx}{install}}
+}
+\nopreamble\nopostamble
+\usedir{doc/latex/nwafuthesis}
+\generate{
+  \file{dtx-style.sty}{\from{\jobname.dtx}{dtx-style}}
+}
+\ifx\fmtname\nameofplainTeX
+  \expandafter\endbatchfile
+\else
+  \expandafter\endgroup
+\fi
+%</internal>
+%<*driver>
+\ProvidesFile{nwafuthesis.drv}[2019/1/22 v1.0 NWAFU thesis template]
+\documentclass{ltxdoc}
+\usepackage{dtx-style}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+% \fi
+% \CheckSum{0}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \DoNotIndex{\newenvironment,\@bsphack,\@empty,\@esphack,\sfcode}
+% \DoNotIndex{\addtocounter,\label,\let,\linewidth,\newcounter}
+% \DoNotIndex{\noindent,\normalfont,\par,\parskip,\phantomsection}
+% \DoNotIndex{\providecommand,\ProvidesPackage,\refstepcounter}
+% \DoNotIndex{\RequirePackage,\setcounter,\setlength,\string,\strut}
+% \DoNotIndex{\textbackslash,\texttt,\ttfamily,\usepackage}
+% \DoNotIndex{\begin,\end,\begingroup,\endgroup,\par,\\}
+% \DoNotIndex{\if,\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
+% \DoNotIndex{\let,\def,\xdef,\edef,\newcommand,\renewcommand}
+% \DoNotIndex{\expandafter,\csname,\endcsname,\relax,\protect}
+% \DoNotIndex{\Huge,\huge,\LARGE,\Large,\large,\normalsize}
+% \DoNotIndex{\small,\footnotesize,\scriptsize,\tiny}
+% \DoNotIndex{\normalfont,\bfseries,\slshape,\sffamily,\interlinepenalty}
+% \DoNotIndex{\textbf,\textit,\textsf,\textsc}
+% \DoNotIndex{\hfil,\par,\hskip,\vskip,\vspace,\quad}
+% \DoNotIndex{\centering,\raggedright,\ref}
+% \DoNotIndex{\c@secnumdepth,\@startsection,\@setfontsize}
+% \DoNotIndex{\ ,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
+% \DoNotIndex{\@@par,\DeclareOperation,\RequirePackage,\LoadClass}
+% \DoNotIndex{\AtBeginDocument,\AtEndDocument}
+%
+%\GetFileInfo{\jobname.drv}
+%
+%\title{
+%  \nwafuthesis{} --- 西北农林科技大学学位论文 \LaTeX{} 宏包
+%}
+%\author{
+%  耿楠\thanks{https://gitee.com/registor/nwafuthesis}
+%}
+%\date{\fileversion{} \qquad \filedate}
+%
+%\maketitle
+%
+% \begin{abstract}
+%   \nwafuthesis{} 宏包旨在建立一个简单易用的西北农林科技大学学位论文模板，包括本科学士、硕士
+%   论文、博士论文以及博士后出站报告。
+% \end{abstract}
+%
+% \vskip2cm
+% \def\abstractname{免责声明}
+% \begin{abstract}
+% \noindent
+% \begin{enumerate}
+% \item 本模板的发布遵守 \LaTeX\ Project Public License，使用前请认真阅读协议内
+%   容。
+% \item 本模板为作者根据《西北农林科技大学本科毕业论文(设计)工作规范》(修订)校教发［2006］84号和
+%   《西北农林科技大学研究生学位论文撰写要求》（\url{http://yjshy.nwafu.edu.cn/xwgl/xwlwxzgf/index.htm}）编写而成，
+%   旨在供西北农林科技大学毕业生撰写学位论文使用。
+% \item 西北农林科技大学教务处和研究生院只提供了毕业论文写作指南，并未提供官方\LaTeX{}模板，也未授
+%   权第三方\LaTeX{}模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格式审查老师
+%   完全同意该模板中提供的格式设定。任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
+% \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
+%   守 \LaTeX\ Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
+%   本模板作者无关。
+% \end{enumerate}
+% \end{abstract}
+%
+% \clearpage
+% \pagestyle{fancy}
+% \begin{multicols}{2}[
+%   \setlength{\columnseprule}{.4pt}
+%   \setlength{\columnsep}{18pt}]
+%   \tableofcontents
+% \end{multicols}
+% \clearpage
+%
+% \changes{v1.0}{2019/1/22}{模板发布。}
+%
+% \def\indexname{代码索引}
+% \def\glossaryname{更新记录}
+% \IndexPrologue{\clearpage\section{\indexname}}
+% \GlossaryPrologue{\section{\glossaryname}}
+%
+% \section{欢迎}
+%
+% \nwafuthesis{} 是西北农林科技大学毕业论文的 \LaTeX{} 模板，支持学士、硕士、博士论文的排版。
+% 合理使用本模板可以减轻论文撰写过程中修改格式的工作量。
+%
+% 本模板按《西北农林科技大学本科毕业论文(设计)工作规范》(修订)校教发校教发［2006］84号和
+% 《西北农林科技大学研究生学位论文撰写要求》（\url{http://yjshy.nwafu.edu.cn/xwgl/xwlwxzgf/index.htm}）编写，
+% 力求合规、简洁、用户友好、易于维护。本模板的特色有：
+% \begin{itemize}
+%   \item 支持本科毕业论文(设计)、硕士、博士的毕业论文；
+%   \item 内置封面、承诺书、摘要、目录等论文部件；
+%   \item 兼容 Windows、Linux、macOS 等常见系统；
+%   \item 支持中、英两种论文语言。
+% \end{itemize}
+%
+% 本文档会尽可能详细介绍模板的使用方法，如有不清楚的地方可以参考示例文档和源代码。
+%
+% \note[注意：]{模板的作用在于减少论文写作过程中格式调整的时间，但其前提是遵守模板的
+% 用法，否则即便用了\nwafuthesis{}模板也难以保证输出的论文格式符合学校规范。}
+%
+% \subsection{系统要求}
+% 本模板用到的宏包较多，有些宏包需要比较新的版本，推荐使用最新的 \TeX~Live 发行版。
+%
+% 如果使用系统(Debian、ArchLinux 等)软件包的 \TeX~Live ，
+% 请使用系统软件包管理器，安装 \TeX~Live 的以下 collection：
+% \verb|langchinese, latexextra, science, pictures, fontsextra|。
+%
+% 如果您使用从 \TeX~Live 官网下载光盘镜像、或是在线安装的话，请使用 \verb|.ci| 目录（可能被隐藏）下的
+% \verb|install.bat| (Windows) 或 \verb|install.sh| 来安装 \TeX~Live 宏包。
+% 因为 Windows 的脚本需要 PowerShell，如果脚本无法运行的话，
+% 请根据 \verb|.ci/texlive.pkgs| 中列出的宏包清单，手工逐个安装。
+%
+% 除了 \TeX~Live 发行版外，
+% Windows 用户也可以使用 MiK\TeX 发行版，它会在编译文档时自动安装所需的依赖项
+% （也可以参考 \TeX~Live 的宏包列表手动安装）。
+%
+% \subsection{获取模板}
+% 您可以从 \url{https://gitee.com/registor/nwafuthesis} 获取本模板的源代码，
+% 或者从 Release 里下载代码压缩包（强烈推荐后者）。
+%
+% 表~\ref{tab:contents} 列出了 \nwafuthesis{} 的主要文件及其功能：
+% \begin{table}[H]
+% \centering
+% \caption{模板源代码内容}
+% \label{tab:contents}
+% \begin{tabular}{>{\ttfamily}l|p{8cm}} \toprule
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\ \midrule
+% nwafuthesis.dtx & 本模板和文档源代码 \\
+% \midrule
+% build.sh/bat & 编译脚本 \\
+% demo\_chs/ & 带完整目录结构的中文示例文档 \\
+% demo\_*/ & 其他示例文档 \\
+% logo/ & 论文封面、页眉所需用到的图片 \\ \bottomrule
+% \end{tabular}
+% \end{table}
+%
+% 本模板利用 \textsc{DocStrip} 将源代码与文档封装在 \verb|nwafuthesis.dtx| 一个文件里，
+% 这个文件无法直接在文档中使用，必须先经过编译，然后在文档中使用编译输出的 \verb|nwafuthesis.cls|。
+% 如果您获取的源代码中不带有编译结果，请运行 \verb|build.sh/bat| 来编译本模板。
+%
+% 编译完成后，请将表~\ref{tab:required} 列出的文件复制到论文的目录。
+% \iffalse
+% 表~\ref{tab:compiled} 列出了 \verb|nwafuthesis.dtx| 编译后产生的文件与作用：
+% \begin{table}[H]
+% \centering
+% \caption{\texttt{nwafuthesis.dtx} 编译输出内容}
+% \label{tab:compiled}
+% \begin{tabular}{>{\ttfamily}l|p{8cm}} \toprule
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\midrule
+% nwafuthesis.cls & 主模板 \\
+% nwafuthesis.cfg & 修改主模板加载行为的配置文件（可选） \\ \midrule
+% nwafuthesis.pdf & 本文档 \\
+% dtx-style.sty  & 本文档的样式文件 \\ \bottomrule
+% \end{tabular}
+% \end{table}
+% \fi
+% \begin{table}[H]
+% \centering
+% \caption{\nwafuthesis{} 论文所需文件}
+% \label{tab:required}
+% \begin{tabular}{>{\ttfamily}l|p{8cm}} \toprule
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\midrule
+% nwafuthesis.cls & 主模板 \\
+% logo/ & 学校Logo图片 \\ \midrule
+% nwafuthesis.cfg & 修改主模板加载行为的配置文件（可选） \\
+% nwafuthesis.pdf & 本文档（可选） \\ \bottomrule
+% \end{tabular}
+% \end{table}
+%
+% 几点说明：
+% \begin{itemize}
+% \item \file{nwafuthesis.cls} 和 \file{nwafuthesis.cfg} 可由\file{nwafuthesis.dtx} 生成，
+%   但为了降低新手用户的使用难度，故将 \file{nwafuthesis.cls} 和 \file{nwafuthesis.cfg} 文件一起发布。
+% \item 使用前阅读文档：\file{nwafuthesis.pdf}。
+% \end{itemize}
+%
+% \note[注意：]{由于本模板还处在开发阶段，可能无法保持向后兼容性，请将使用的模板版本复制到论文目录下，不推荐系统全局安装。}
+%
+% \subsection{快速上手}
+% 为了方便演示代码的效果，请参考/修改附带的示例文档。
+%
+% 本模板没有使用依赖于特定 \LaTeX 引擎的特性，所以您可以使用任意 \CTeX 支持的 \LaTeX 引擎进行编译，
+% 推荐使用 \XeLaTeX{} 作引擎，并使用 latexmk 来自动化编译流程。
+% up\LaTeX{}、pdf\LaTeX{}、\LaTeX{} 理论上也能够编译中文文档，但不保证能编译出正确结果。
+%
+% \section{使用说明}
+% 本节介绍在使用本文档类写作时，可能会用到的、由本文档类提供的功能。
+%
+% \subsection{文档类选项}
+% \DescribeOption{degree=}
+% 选择论文的类型，必选，当前支持 \option{bachelor}、\option{master} 和 \option{doctor}。
+%
+% \DescribeOption{type=}
+% 本科生需指定文档是毕业论文( \option{paper}) 或者是毕业设计 (\option{design})。
+%
+% \DescribeOption{techmaster}
+% 专硕，只会影响封面中的两个字段，默认不启用。% 
+%
+% \DescribeOption{blankleft}
+% 如果指定了 \option{openright} 并开启了本选项，左侧的空白页将变成没有页眉页脚的空白页面。
+%
+% \DescribeOption{abstractopenright}
+% 如果指定了 \option{openright} 并开启了本选项，摘要页将从奇数页开始。
+%
+% \DescribeOption{lang=}
+% 选择论文的主语言，将影响加载的底层文档类，当前支持 \option{cn}（默认）和 \option{en}。
+%
+% \DescribeOption{fontset=}
+% 指定 \CTeX{} 使用的中文字体，这个参数将原样传递给 \CTeX，具体的用法请参阅 \CTeX{} 文档。
+%
+% \DescribeOption{*}
+% 其他参数将传递给对应的底层文档类，常用的有 \option{openany}、\option{openright}、\option{oneside}、\option{twoside} 等。
+%
+% 在生成单面打印或电子阅读版的论文时，推荐使用 \option{openany}, \option{oneside}；
+%
+% 在生成双面打印的论文时，推荐使用 \option{openright}, \option{blankleft}, \option{twoside}。
+%
+% \subsection{论文信息}
+% 论文信息主要包含两部分：封面页（\cs{nwafuset}）和摘要页（\env{abstract} 环境与 \cs{keywords}）。
+% 这三个宏将设置中文信息，同理还定义了带 \verb|En| 后缀的 3 个宏，用于设置英文的论文信息。
+%
+% \subsubsection*{中文信息}
+% \DescribeMacro{\nwafuset}
+% 该宏用于设置论文的中文信息，它能接受一个 kvoption 的参数，
+% 无论论文是什么语言，该参数内的信息都默认按中文处理。
+% 它可以包含以下信息：
+%
+% \DescribeOption{title=}
+% 论文的标题，如果需要手工换行，请使用 \cs{linebreak}，并保证“\textbackslash”前没有空格；
+%
+% 注：该空格会影响声明页、页眉中的论文标题，中文不能有空格，英文必须有空格。
+%
+% \DescribeOption{author=} 论文作者姓名；
+%
+% \DescribeOption{college=} 学院名称；
+%
+% \DescribeOption{advisers=}
+% 指导教师姓名，如果需要指定多位指导教师，请用\note[]{英文逗号}分割，
+% 本科封面上将会把所有人的名字写在一行，用顿号分割；
+% 硕士封面上将会每人的名字将独立占用一行。
+%
+% \DescribeOption{applydate=}
+% 封面日期，如果不指定的话，将会使用当前系统日期。
+%
+% \textbf{本科生}还支持以下参数：
+%
+% \DescribeOption{major=} 专业名称；
+%
+% \DescribeOption{studentid=} 学号；
+%
+% \DescribeOption{classid=} 班号；
+%
+% \textbf{硕/博士}还支持以下参数：
+%
+% \DescribeOption{libraryclassid=} 中图分类号，如果需要指定多个，请手动添加合适的分隔符，
+% 模板目前不会替换里面出现的这些分割符；
+%
+% \DescribeOption{subjectclassid=} 学科分类号；
+%
+% \DescribeOption{thesisid=} 论文编号；
+%
+% \DescribeOption{majorsubject=} 学科、专业；
+%
+% \DescribeOption{researchfield=} 研究方向；
+%
+% \subsubsection*{英文信息}
+% \DescribeMacro{\nwafusetEn}
+% 该宏用于设置论文英文信息，它能接受一个 kvoption 的参数，
+% \textbf{除了}标题外，其他参数只提供给\textbf{硕/博士}使用，它可以包含以下信息：
+%
+% \DescribeOption{title=}
+% 论文的标题，如果需要手工换行，请使用 \cs{linebreak}，并保证“\textbackslash”前\textbf{有空格}；
+%
+% \DescribeOption{advisers=}
+% 指导教师，与中文不同，这里不会作任何姓名分割处理。
+%
+% \DescribeOption{degreefull=}
+% 英文底部学位全称。
+%
+% \DescribeOption{*}
+% \option{college}、
+% \option{majorsubject}、
+% \option{author}、
+% \option{applydate}、
+% 这些参数与中文封面的含义完全一致。
+%
+% \subsubsection*{摘要页}
+% \DescribeEnv{abstract}
+% 环境，包括 \env{abstract}和\env{abstractEn}，
+% 用于定义中英文摘要页的内容。
+%
+% \DescribeMacro{\keywords}
+% 包括 \cs{keywords}和\cs{keywordsEn}。
+% 设置摘要页上的关键词，用英文逗号分隔，输出时模板会使用指定的符号进行分割。
+%
+% \subsection{定理环境}
+% 因为本模板提供了多种定理环境编号方式，并且编号格式没有固定的使用方式，
+% 因此没有定义任何定理环境，所有环境都需要作者在导言中（使用以下3个宏）定义。
+%
+% \begin{macro}{\nwafutheoremg}
+% \oarg{refname}\marg{name}\marg{label}
+% 定义一个定理环境，计数器不会重置。
+% 环境的名字是 \marg{name}，定理排版标签是 \marg{label}，引用标签为 \oarg{refname}。
+% 如果 \oarg{refname} 为空，则默认为 \marg{label}。
+% 宏的全名为 \verb|NWAFU Theorem Global|。
+% \end{macro}
+%
+% \begin{macro}{\nwafutheoremchap}
+% \oarg{refname}\marg{name}\marg{label}
+% 定义一个定理环境，每个章节单独计数。
+%
+% 即：使用这个宏定义的定理环境，它们的编号有重复。
+%
+% 环境的名字是 \marg{name}，定理排版标签是 \marg{label}，引用标签为 \oarg{refname}。
+% 如果 \oarg{refname} 为空，则默认为 \marg{label}。
+% 宏的全名为 \verb|NWAFU Theorem CHAPter|。
+% \end{macro}
+%
+% \begin{macro}{\nwafutheoremchapu}
+% \oarg{refname}\marg{name}\marg{label}
+% 定义一个定理环境，与其他同方法声明的环境变量共享一个计数器。
+%
+% 即：使用这个宏定义的定理环境，它们的编号不会有重复。
+%
+% 环境的名字是 \marg{name}，定理排版标签是 \marg{label}，引用标签为 \oarg{refname}。
+% 如果 \oarg{refname} 为空，则默认为 \marg{label}。
+% 宏的全名为 \verb|NWAFU Theorem CHAPter Unified|。
+% \end{macro}
+%
+% \subsection{字体}
+% 大部分场合下，模板会自动指定字体和大小。
+% 但可能有地方仍然需要手工指定字体（比如续表的表头），请使用对应的 \texttt{nwafufont*} 开头的宏。
+%
+% 学校的字体规定是基于Windows习惯的，按常理来说，字体可以分为衬线体与无衬线体，
+% 在不同语言中可能有不同的别称，如：
+%
+% \begin{table}[H]
+% \centering
+% \begin{tabular}{ccc} \toprule
+% 类型 & 英文 & 中文\\ \midrule
+% 衬线 & \cs{rmfamily} \textrm{Roman, Serif} & \cs{songti} \songti 宋体\\
+% 无衬线 & \cs{sffamily} \textsf{Sans-serif} & \cs{heiti} \heiti 黑体\\ \bottomrule
+% \end{tabular}
+% \caption{本模板依赖的4个主要字体宏}
+% \end{table}
+%
+% 在学校要求中，大部分标题的中文是黑体（无衬线）的，但部分标题的英文却要求是 Times New Roman（衬线）。
+% 当前模板只能根据英文字体，自动设置对应的中文字体，因此在部分标题上，可能无法设置成符合学校规定的字体。
+% 不过，既然是用\LaTeX{}排版，就应该有一套符合\LaTeX{}习惯和规范的规定，希望学校相关部分能够重新制定相关规定。
+%
+% 如果觉得 \CTeX 和对应的文档类的字体不够美观的话，可以按以下步骤修改字体，
+% 需要注意的是以下步骤只适用于 \XeLaTeX 环境。
+%
+% 修改一个中文字体需要两条命令，可以参考 \verb|demo_chs/setup/format.tex| 开头被 \cs{iffalse} 注释掉的那段代码，
+% 它同时修改了宋体与黑体。
+% \begin{latex}
+% % 加载字体，字体名称可以通过在命令行通过执行 fc-list 命令查看。
+% \setCJKfamilyfont{\CJKrmdefault}[BoldFont=Noto Serif CJK SC Bold]{Noto Serif CJK SC}
+% % 重定义宋体
+% \renewcommand\songti{\CJKfamily{\CJKrmdefault}}
+% % 同理，加载黑体的字体（这里选择字重稍粗的 Medium 作普通字体）
+% \setCJKfamilyfont{\CJKsfdefault}[BoldFont=Noto Sans CJK SC Bold]{Noto Sans CJK SC Medium}
+% % 重定义黑体
+% \renewcommand\heiti{\CJKfamily{\CJKsfdefault}}
+% \end{latex}
+%
+% 除了英文、数学，以及上述 4 种字体外，本模板还用到了楷体 \cs{kaishu}。
+%
+% \section{更新方法}
+% 本节将介绍在保留论文代码基本不变的情况下，更新模板代码。
+%
+% 在更新原论文使用的模板之前，请务必先\textbf{完整备份}所有文件，
+% 以防意外导致无法还原、也无法用任何模板版本编译的情况。
+%
+% 如果版本号变化没有在本节中出现的话，直接将新版的 \texttt{nwafuthesis.cls} 替换旧模板即可。
+% 否则请务必按照本节中描述的步骤进行修改。
+%
+% \section{外文特辑}
+% 本节将介绍外国语论文时的注意事项。
+%
+% 为了避免外文内容中使用中文格式、字体，本模板选择加载原生的外文文档类，并尽量避免使用 \CTeX 的特性。
+%
+% 但由于学校的论文模板中没有提及外文的格式，
+% 所以没能总结出值得信任的标准，请打算用外文写学位论文的准毕业生提前与指导老师确认格式是否有问题。
+% 欢迎在 Gitee\footnote{\url{https://gitee.com/registor/nwafuthesis/issues/new}} 上指正格式问题，
+% 笔者会在第一时间修正模板，使其符合规范的。
+%
+% \subsection{英文}
+% 英文环境下（即文档参数\option{lang=en}），本模板将加载 \verb|book| 文档类。
+% 基本与中文环境兼容，可以在正文中直接使用中文。
+%
+% \subsubsection*{已知问题}
+% 部分英文格式没有确定下来，目前只参照中文的格式、姑且按笔者的直觉设置了一下，包括不限于：
+% \begin{itemize}
+%   \item 各级标题的前后缀、字体、大小写
+%   \item 正文段落缩进
+%   \item 定理环境的字体（是否斜体、大小写）
+%   \item 摘要页顺序等
+% \end{itemize}
+%
+% 模板中没有提到的格式细节（如特殊页面、定理环境）是按照笔者的直觉设置的，
+% 很可能不符合评审老师的要求，因此在交稿前务必与指导老师确认格式是否正确。
+%
+% \section{致谢}
+% 这个模板是站在巨人肩膀上的成果，感谢为本模板提供基本框架的\textsc{thuthesis}和\nuaathesis{}，
+% 感谢西北农林科技大学信息工程学院2013级本科生王迪和江旭、2014级刘朝洋
+% 的模板初稿，感谢张志毅老师的协作，感谢学校、学院相关部分的大力支持，
+% 特别感谢信息工程学院张宏鸣副院长的鼎力支持，在学院中从2018届毕业论文撰写中开始推广该模板，
+% 世界因你们而美好。
+%
+% \section{实现细节}
+%
+% \subsection{模板信息}
+%    \begin{macrocode}
+%<cls>\NeedsTeXFormat{LaTeX2e}
+%<cls>\ProvidesClass{nwafuthesis}
+%<cfg>\ProvidesFile{nwafuthesis.cfg}
+%<cls|cfg>[2019/1/22 v1.0 NWAFU Thesis Template]
+%    \end{macrocode}
+% \subsection{配置文件}
+% 配置文件的内容将于模板加载前期执行，一般内容为空（或不存在该配置文件），
+% 主要用于存放必须在模板加载前执行的代码，例如修改本模板加载的宏包参数。
+%    \begin{macrocode}
+%<cls>\InputIfFileExists{nwafuthesis.cfg}{}{}
+%    \end{macrocode}
+%
+% 原模板中配置文件里的字符串常量，现已移动到文档类主文件；
+% 如果需要修改，请使用 \cs{renewcommand} 重定义对应的宏。
+% （因为宏名称里有 \verb|@| 符号，因此请使用 \cs{makeatletter} 和 \cs{makeatother}。）
+%
+% 封面页上用到的字符串：
+%    \begin{macrocode}
+%<*cls>
+\AtEndOfClass{
+\newcommand\nwafu@label@nwafu{西北农林科技大学}
+\newcommand\nwafu@label@worktype@paper{毕业论文}
+\newcommand\nwafu@label@worktype@design{毕业设计}
+\newcommand\nwafu@label@worktype@master{硕士学位论文}
+\newcommand\nwafu@label@worktype@doctor{博士学位论文}
+\newcommand\nwafu@label@thesisnum{编号}
+\newcommand\nwafu@label@stuno{学号}
+\newcommand\nwafu@label@title{题\quad 目}
+\newcommand\nwafu@label@teamname{团队名称}
+\newcommand\nwafu@label@author{学生姓名}
+\newcommand\nwafu@label@studentid{学号}
+\newcommand\nwafu@label@college{学院}
+\newcommand\nwafu@label@department{系部}
+\newcommand\nwafu@label@major{专业}
+\newcommand\nwafu@label@classid{班级}
+\newcommand\nwafu@label@adviser{指导教师}
+\newcommand\nwafu@label@coadviser{协助指导教师}
+\newcommand\nwafu@label@applydate{完成日期}
+\newcommand\nwafu@label@researchername{研究生姓名}
+\newcommand\nwafu@label@majorsubject{学科、专业}
+\newcommand\nwafu@label@researchfield{研究方向}
+\newcommand\nwafu@label@professionaltype{专业类别}
+\newcommand\nwafu@label@professionalfield{专业领域}
+\newcommand\nwafu@label@graduateschool{研究生院}
+\newcommand\nwafu@labelEn@nwafu{Norhtwest A \& F University}
+\newcommand\nwafu@labelEn@graduateschool{The Graduate School}
+%    \end{macrocode}
+% 摘要页用到的字符串：
+%    \begin{macrocode}
+\newcommand\nwafu@label@abstract{摘要}
+\newcommand\nwafu@label@abstractshort{摘要}
+\newcommand\nwafu@label@keywords{关键词}
+\newcommand\nwafu@label@keywordsep{; }
+\newcommand\nwafu@label@abstract@toc{摘要}
+\newcommand\nwafu@labelEn@abstract{Abstract}
+\newcommand\nwafu@labelEn@ABSTRACT{ABSTRACT}
+\newcommand\nwafu@labelEn@KeyWords{Key Words}
+\newcommand\nwafu@labelEn@keywords{Keywords}
+\newcommand\nwafu@labelEn@keywordsep{; }
+%    \end{macrocode}
+% 目录部分用到的字符串：
+%    \begin{macrocode}
+\newcommand\nwafu@label@reportpaper{毕业设计（论文）}
+%    \end{macrocode}
+% 语言相关
+%    \begin{macrocode}
+\ifnwafu@lang@cn
+  \newcommand\listfiguretablename{图表清单}
+  \def\equationautorefname{式}
+  \def\AMSautorefname{式}
+\else\ifnwafu@lang@en
+  \newcommand\listfiguretablename{List of Figures and Tables}
+\fi\fi
+}
+%    \end{macrocode}
+% \subsection{文档类的选项与参数}
+% \subsubsection{定义与读取}
+% 使用 \pkg{kvoptions} 来处理传给本文档类的参数。
+%    \begin{macrocode}
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+  family=nwafu,
+  prefix=nwafu@,
+  setkeys=\kvsetkeys
+}
+%    \end{macrocode}
+% 定义用户类型，目前支持学士、硕士、博士三类。
+%    \begin{macrocode}
+\newif\ifnwafu@bachelor \nwafu@bachelorfalse
+\newif\ifnwafu@master   \nwafu@masterfalse
+\newif\ifnwafu@doctor   \nwafu@doctorfalse
+\define@key{nwafu}{degree}{
+  \expandafter\csname nwafu@#1true\endcsname}
+%    \end{macrocode}
+% 定义硕士类别（专硕）
+%    \begin{macrocode}
+\DeclareBoolOption[false]{techmaster}
+%    \end{macrocode}
+% 定义论文的主语言
+%    \begin{macrocode}
+\newif\ifnwafu@lang@cn \nwafu@lang@cnfalse
+\newif\ifnwafu@lang@en \nwafu@lang@enfalse
+\define@key{nwafu}{lang}{
+  \expandafter\csname nwafu@lang@#1true\endcsname}
+%    \end{macrocode}
+% 定义文档类型是毕业论文还是毕业设计。
+%    \begin{macrocode}
+\newif\ifnwafu@worktype@paper  \nwafu@worktype@paperfalse
+\newif\ifnwafu@worktype@design \nwafu@worktype@designfalse
+\define@key{nwafu}{type}{
+  \expandafter\csname nwafu@worktype@#1true\endcsname}
+%    \end{macrocode}
+% 右开时空白的左页是否让页眉页脚空白
+%    \begin{macrocode}
+\DeclareBoolOption[false]{blankleft}
+%    \end{macrocode}
+% 摘要页也需要右开
+%    \begin{macrocode}
+\DeclareBoolOption[false]{abstractopenright}
+%    \end{macrocode}
+% 中文字体参数（传递给\CTeX）
+%    \begin{macrocode}
+\DeclareStringOption{fontset}
+%    \end{macrocode}
+% 是否在封面/摘要页上禁用粗体（推荐使用 fandol 之类字体时启用）
+%    \begin{macrocode}
+\DeclareBoolOption[false]{nobold}
+%    \end{macrocode}
+% 准备第一遍参数解析，主要获取上述定义的参数，暂时忽略其余的参数。
+% 剩余的参数将于第二遍解析时，传递给对应的基文档类。
+%    \begin{macrocode}
+\DeclareDefaultOption{}
+%    \end{macrocode}
+% 开始第一遍参数解析
+%    \begin{macrocode}
+\kvsetkeys{nwafu}{}
+\ProcessKeyvalOptions*
+%    \end{macrocode}
+% \subsubsection{合法性检查与常量定义}
+% 必须指定用户类型(学士、硕士、博士)
+%    \begin{macrocode}
+\ifnwafu@bachelor\relax\else
+\ifnwafu@master\relax\else
+\ifnwafu@doctor\relax\else
+  \ClassError{nwafuthesis}{
+    Thesis degree must be specified: \MessageBreak
+    degree=[bachelor|master|doctor]}
+\fi\fi\fi
+%    \end{macrocode}
+% 本科生必须指定文档类型(论文、设计)；硕士、博士默认为论文，且必须选择论文。
+%    \begin{macrocode}
+\ifnwafu@bachelor
+  \ifnwafu@worktype@paper\relax\else
+    \ifnwafu@worktype@design\relax\else
+      \ClassError{nwafuthesis}{
+        Thesis type must be specified: \MessageBreak
+        type=[paper|design]}
+    \fi
+  \fi
+\else
+  \ifnwafu@worktype@design
+    \ClassError{nwafuthesis}{Paper should be submit instead of design}
+  \else
+    \nwafu@worktype@papertrue
+  \fi
+\fi
+%    \end{macrocode}
+% 默认论文的主语言是中文。
+%    \begin{macrocode}
+\ifnwafu@lang@cn\relax\else
+  \ifnwafu@lang@en\relax\else
+    \nwafu@lang@cntrue
+  \fi
+\fi
+%    \end{macrocode}
+% 根据学校信息，定义对应图标。
+%    \begin{macrocode}
+\iffalse
+  \newcommand\nwafu@university{\nwafu@label@college}
+  \newcommand\nwafu@universityLogo{logo/cie.png}
+\else
+  \newcommand\nwafu@university{\nwafu@label@nwafu}
+  \newcommand\nwafu@universityLogo{logo/nwafubilogo.png}
+\fi
+%    \end{macrocode}
+% 根据文档类型，设置文档的中文名称。
+%    \begin{macrocode}
+\newcommand\nwafu@worktypecn{%
+  \ifnwafu@bachelor%
+    \ifnwafu@worktype@paper%
+      \nwafu@label@worktype@paper%
+    \else%
+      \nwafu@label@worktype@design%
+    \fi%
+  \else%
+    \ifnwafu@master%
+      \nwafu@label@worktype@master%
+    \else%
+      \nwafu@label@worktype@doctor%
+    \fi%
+  \fi%
+}
+%    \end{macrocode}
+% \subsubsection{文档信息收集}
+% 首先为每种语言定义一个存放数据的 key-value
+%    \begin{macrocode}
+\def\nwafuset{\kvsetkeys{nwafu@value}}
+\def\nwafusetEn{\kvsetkeys{nwafu@valueEn}}
+%    \end{macrocode}
+%
+% \begin{macro}{\nwafu@define}
+% 定义一个字段，同时定义设置该字段的全局宏。
+%    \begin{macrocode}
+\def\nwafu@define #1{
+  \define@key{nwafu}{#1}{\csname #1\endcsname{##1}}
+  \expandafter\gdef\csname #1\endcsname##1{
+    \expandafter\gdef\csname nwafu@#1\endcsname{##1}}
+  \csname #1\endcsname{}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\nwafu@define@list}
+% \marg{field}\marg{sep}
+% 定义一个字段，同时定义设置该字段的全局宏；
+% 与前者不同的是，它在设置字段时，能将逗号分隔的值用 \marg{sep} 连接起来。
+%    \begin{macrocode}
+\def\nwafu@define@list#1#2{
+  \define@key{nwafu}{#1}{\csname #1\endcsname{##1}}
+  \expandafter\gdef\csname nwafu@#1\endcsname{}
+  \expandafter\gdef\csname nwafu@#1@pdf\endcsname{}
+  \expandafter\gdef\csname #1\endcsname##1{
+    \@for\reserved@a:=##1\do{
+      \expandafter\ifx\csname nwafu@#1\endcsname\@empty\else
+        \expandafter\g@addto@macro\csname nwafu@#1\endcsname{%
+          \ignorespaces #2}
+        \expandafter\g@addto@macro\csname nwafu@#1@pdf\endcsname{,}
+      \fi
+      \expandafter\expandafter\expandafter\g@addto@macro%
+        \expandafter\csname nwafu@#1\expandafter\endcsname\expandafter{\reserved@a}
+    }
+    \expandafter\gdef\csname nwafu@#1@pdf\endcsname{##1}
+  }
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% 文档的中文信息
+%    \begin{macrocode}
+\nwafu@define{value@title}
+\nwafu@define{value@author}
+\nwafu@define{value@college}
+\nwafu@define{value@applydate}
+\ifnwafu@bachelor
+  \nwafu@define@list{value@advisers}{、}
+  \nwafu@define@list{value@coadvisers}{、}
+\else
+  \nwafu@define@list{value@advisers}{\linebreak}
+  \nwafu@define@list{value@coadvisers}{\linebreak}
+\fi
+\nwafu@define{value@major}
+\nwafu@define{value@studentid}
+\nwafu@define{value@classid}
+\nwafu@define{value@libraryclassid}
+\nwafu@define{value@subjectclassid}
+\nwafu@define{value@thesisid}
+\nwafu@define{value@gradyear}
+\nwafu@define{value@majorsubject}
+\nwafu@define{value@researchfield}
+%    \end{macrocode}
+%
+% 文档的英文信息
+%    \begin{macrocode}
+\nwafu@define{valueEn@title}
+\ifnwafu@bachelor\relax
+\else
+\fi
+\nwafu@define{valueEn@college}
+\nwafu@define{valueEn@majorsubject}
+\nwafu@define{valueEn@author}
+\nwafu@define{valueEn@advisers}
+\nwafu@define{valueEn@degreefull}
+\nwafu@define{valueEn@applydate}
+%    \end{macrocode}
+%
+% 摘要页
+%    \begin{macrocode}
+\RequirePackage{etoolbox}
+\RequirePackage{environ}
+\newcommand{\nwafu@@abstract}[1]{\long\gdef\nwafu@abstract{#1}}
+\newenvironment{abstract}{\Collect@Body\nwafu@@abstract}{}
+\newcommand{\nwafu@@abstractEn}[1]{\long\gdef\nwafu@abstractEn{#1}}
+\newenvironment{abstractEn}{\Collect@Body\nwafu@@abstractEn}{}
+\nwafu@define@list{keywords}{\nwafu@label@keywordsep}
+\nwafu@define@list{keywordsEn}{\nwafu@labelEn@keywordsep}
+%    \end{macrocode}
+%
+% 收集一些常用字段
+%    \begin{macrocode}
+\ifnwafu@lang@cn
+  \newcommand\nwafu@title{\nwafu@value@title}
+\else\ifnwafu@lang@en
+  \newcommand\nwafu@title{\nwafu@valueEn@title}
+\fi\fi
+\newcommand\nwafu@font@toc{\normalsize}
+%    \end{macrocode}
+%
+% \subsection{主文档类}
+% 本节将第二次解析参数、加载基础文档类、设置全局格式，如页面大小、字号、行间距等，并定义标题字体。
+%
+% 首先解释一下本节会出现的行距 Magic Number，以及它们是如何计算出来的。
+%
+% 根据要求，本科生论文字号为小四(12~pt)，行间距为20~pt。
+% 因为行间距是固定值，所以行间距最终设置为 $20 \div (12 \times 1.2) \approx 1.3889$。
+%
+% 同理，硕/博士论文字号为五号(10.5~pt)，行间距为20~pt。
+% 因为行间距是固定值，所以 Word 的文档网络不会影响行间距。
+% 行间距最终设置为 $20 \div (10.5 \times 1.2) \approx 1.5873$。
+%
+% 注：Word 中的单位“磅(pt)” 是 $1/72$~inch，对应 \LaTeX 中的 $1$~bp。
+%
+%    \begin{macrocode}
+\RequirePackage{expl3}
+\ExplSyntaxOn
+\sys_if_engine_xetex:TF{
+  \PassOptionsToPackage{no-math}{fontspec}
+}{}
+\ExplSyntaxOff
+%    \end{macrocode}
+% 加载文档类之前，确保文档类不会干扰数学字体。
+%
+% \subsubsection{中文的文档类}
+% 直接使用 \cls{ctexbook}
+%    \begin{macrocode}
+\ifnwafu@lang@cn
+  \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+  \ProcessKeyvalOptions*
+  \ifnwafu@bachelor
+    \PassOptionsToClass{zihao=-4,linespread=1.3889}{ctexbook}
+  \else
+    \PassOptionsToClass{zihao=5,linespread=1.5873}{ctexbook}
+  \fi
+  \PassOptionsToClass{a4paper,scheme=chinese,space=auto,UTF8}{ctexbook}
+  \ifx\nwafu@fontset\@empty\relax
+    \PassOptionsToClass{fontset=\nwafu@fontset}{ctexbook}
+  \fi
+  \LoadClass{ctexbook}
+%    \end{macrocode}
+% 利用 \CTeX 提供接口，将图表清单里 chapter 之间的空隙修改为0，
+% 将chapter编号设置为阿拉伯数字。
+%    \begin{macrocode}
+  \ctexset{chapter = {
+    lofskip = 0pt,
+    lotskip = 0pt    
+  }}
+%    \end{macrocode}
+% 定义各级标题的字体，英文设置为 Sans，中文设置成黑体
+%    \begin{macrocode}
+  \newcommand\nwafu@font@title{\sffamily\heiti}
+%    \end{macrocode}
+% 定义图表清单中“图x-xx”的长度
+%    \begin{macrocode}
+  \newcommand\nwafu@indentloft{3.5pc}
+%    \end{macrocode}
+% 定义一级标题的编号格式
+%    \begin{macrocode}
+  \newcommand\nwafu@chaptername\CTEX@chaptername
+%    \end{macrocode}
+% 中文的所有段落都需要首行缩进，包括标题行后的那一段
+%    \begin{macrocode}
+  \PassOptionsToPackage{indentafter}{titlesec}
+%    \end{macrocode}
+%
+% \subsubsection{英文的文档类}
+% 英文的文档使用最普通的 \cls{book}
+%    \begin{macrocode}
+\else\ifnwafu@lang@en
+  \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{book}}
+  \ProcessKeyvalOptions*
+  \PassOptionsToClass{a4paper}{book}
+  \LoadClass{book}
+%    \end{macrocode}
+% 标题字体，只设置了英文为 Sans
+%    \begin{macrocode}
+  \newcommand\nwafu@font@title{\sffamily}
+%    \end{macrocode}
+% 定义图表清单中“Figure x-xx”的长度
+%    \begin{macrocode}
+  \newcommand\nwafu@indentloft{5.0pc}
+%    \end{macrocode}
+% 定义一级标题的前缀
+%    \begin{macrocode}
+  \newcommand\nwafu@chaptername{\@chapapp\space \thechapter}
+%    \end{macrocode}
+% 英文的格式仍未确定，目前按照中文格式，首段首行缩进。
+%    \begin{macrocode}
+  \PassOptionsToPackage{indentafter}{titlesec}
+  \fi
+%    \end{macrocode}
+% \subsubsection{共用代码}
+% 加载完基础文档类后，再加载 \pkg{ctex} 来使用中文字体，并设置全局默认字号、行间距。
+%    \begin{macrocode}
+  \ifnwafu@bachelor
+    \PassOptionsToPackage{zihao=-4,linespread=1.3889}{ctex}
+  \else
+    \PassOptionsToPackage{zihao=5,linespread=1.5873}{ctex}
+  \fi
+  \PassOptionsToPackage{scheme=plain}{ctex}
+  \ifx\nwafu@fontset\@empty\relax
+    \PassOptionsToPackage{fontset=\nwafu@fontset}{ctex}
+  \fi
+  \RequirePackage{ctex}
+%    \end{macrocode}
+%
+% patch 图表清单中章之间的空隙。
+%
+% 务必在用 \pkg{titlesec} 修改标题样式前 patch，
+% 否则 patch 会失败。
+%    \begin{macrocode}
+  \typeout{Patching list of figure/table in chapter}
+  \patchcmd{\@chapter}
+    {\addtocontents{lof}{\protect\addvspace{10\p@}}}
+    {}
+    {\typeout{lof-ok}}
+    {\typeout{lof-FAIL}}
+  \patchcmd{\@chapter}
+    {\addtocontents{lot}{\protect\addvspace{10\p@}}}
+    {}
+    {\typeout{lot-ok}}
+    {\typeout{lot-FAIL}}
+\fi
+%    \end{macrocode}
+% 如果文档编译先生成 DVI 再生成 PDF，需要做一些设置。
+%    \begin{macrocode}
+\ExplSyntaxOn
+\sys_if_engine_xetex:TF{}{
+  \sys_if_output_dvi:TF{
+    \PassOptionsToPackage{dvipdfmx}{graphicx}
+    \PassOptionsToPackage{dvipdfmx}{hyperref}
+    \def\pgfsysdriver{pgfsys-dvipdfm.def}
+  }{}
+}
+\ExplSyntaxOff
+%    \end{macrocode}
+% \begin{macro}{\nwafu@textbf}
+% 根据选项，将参数使用粗体或普通字体输出
+%    \begin{macrocode}
+\ifnwafu@nobold
+  \newcommand\nwafu@textbf[1]{#1}
+\else
+  \newcommand\nwafu@textbf[1]{{\bfseries #1}}
+\fi
+%    \end{macrocode}
+% \end{macro}
+% 加载宏包，只加载本模板必须的，以及常用的、需要调整参数的宏包，
+% 其他宏包需要手动加载。
+%    \begin{macrocode}
+\RequirePackage{geometry}  % 页边距
+\RequirePackage{fancyhdr}  % 页眉页脚
+\RequirePackage{titlesec}  % 各级标题
+\RequirePackage{titletoc}  % 目录
+\RequirePackage[backend=biber,
+                style=gb7714-2015ay,
+                sortlocale=zh__pinyin,
+                gbtype=false,
+                maxbibnames=99,% 著录所有作者
+                maxcitenames=2,% 引用标注中最多显示2个作者
+                mincitenames=1,% 3个及3个以上的作者截断为1个作者
+                %gbnamefmt=lowercase,% 姓名大小写由输出定
+                %gbnamefmt=pinyin,
+                gbnamefmt=familyahead,
+                %url=false,
+                doi=false,
+                isbn=false,
+                gbfieldtype=true,
+                gbpunctin=false,
+                ]{biblatex}
+\PassOptionsToPackage{normalem}{ulem}
+\RequirePackage{ulem}      % 英文下划线
+\RequirePackage{graphicx}  % 图
+\RequirePackage{array}
+\RequirePackage{tabu}
+\RequirePackage{booktabs}  % toprule, etc
+\RequirePackage{multicol}
+\RequirePackage{caption}   % DeclareCaptionFont
+\RequirePackage{hyperref}
+\RequirePackage{ifxetex}
+\RequirePackage{siunitx}
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\RequirePackage{calc}     % 计算文本长度\widthof{...}
+\RequirePackage{aliascnt} % newaliascnt/aliascntresetthe
+\RequirePackage[inline]{enumitem} % 更好的列表环境
+\RequirePackage{environ}
+\RequirePackage{floatrow} % 替代原 float 包
+%\RequirePackage{setspace} % 设置间距
+\floatsetup[table]{style=plaintop}
+%    \end{macrocode}
+%
+% 利用 \pkg{CJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
+% \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
+%    \begin{macrocode}
+\RequirePackage{CJKfntef}
+%    \end{macrocode}
+%
+%
+% 设置 url 样式，与上下文一致
+%    \begin{macrocode}
+\urlstyle{same}
+%    \end{macrocode}
+%
+% 使用 \pkg{xurl} 的方法，增加 URL 可断行的位置。
+%    \begin{macrocode}
+\def\UrlBreaks{%
+  \do\/%
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l%
+     \do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z%
+  \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L%
+     \do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z%
+  \do0\do1\do2\do3\do4\do5\do6\do7\do8\do9\do=\do/\do.\do:%
+  \do\*\do\-\do\~\do\'\do\"\do\-}
+\Urlmuskip=0mu plus 0.1mu
+%    \end{macrocode}
+%
+% \subsection{格式设置}
+% \subsubsection{字体}
+% 学校的 Word 模板要求英文使用 Monotype 的 Times New Roman\textsuperscript{\textregistered}，
+% 但这不是一个免费字体，而且对于非 Windows 平台，并不提供该字体，因此，
+% 本模板使用字形相似的 \pkg{newtx} 代替
+%    \begin{macrocode}
+\RequirePackage[defaultsups]{newtxtext}
+\RequirePackage{newtxmath}
+%    \end{macrocode}
+% \begin{macro}{zhcn}
+% 为了方便在非中文环境正确使用中文字体，定义了一个根据英文字体选择中文字体的宏。
+% 之所以动用 \pkg{expl3} 是因为来自 \pkg{xstring} 的 \cs{IfStrEq}（和另一个实现方法）会把 True
+% False 分支都输出到 PDF 书签里，结果一个书签里的中文重复出现了若干遍。
+%
+% 注：原本打算命名为 \cs{chs} (CHinese Simplified) 的，但是这个名字被占用了。
+%    \begin{macrocode}
+\ExplSyntaxOn
+\cs_set:Npn \zhcn #1{
+  \str_if_eq_x:nnTF{\f@family}{\rmdefault}
+  {{\songti#1}}{
+  \str_if_eq_x:nnTF{\f@family}{\sfdefault}
+  {{\heiti#1}}{
+  \str_if_eq_x:nnTF{\f@family}{\ttdefault}
+  {{\kaiti#1}}{#1}
+  }}}
+\ExplSyntaxOff
+%    \end{macrocode}
+% \end{macro}
+%
+% 在使用 Windows Vista 或之后版本的系统时，\pkg{ctex} 宏包会默认使用微软雅黑字体，
+% 这可能会导致格式审查不合格。下面设置适合印刷的黑体，同时保持跨平台兼容性。
+%    \begin{macrocode}
+\ifthenelse{\equal{\nwafu@fontset}{windows}}{
+  \ifxetex
+    \setCJKsansfont{SimHei}
+  \else
+    \setCJKsansfont{simhei.ttf}
+    \csname ctex_punct_map_family:nn\endcsname{\CJKsfdefault}{zhhei}
+  \fi
+}{}
+%    \end{macrocode}
+%
+% 类似地，\pkg{ctex} 2.4.14 开始在 macOS 下自动调用苹方黑体，所以必进行调整。
+%    \begin{macrocode}
+\ifthenelse{\equal{\nwafu@fontset}{mac}}{
+  \setCJKmainfont[
+         UprightFont = * Light,
+            BoldFont = * Bold,
+          ItalicFont = Kaiti SC,
+      BoldItalicFont = Kaiti SC Bold
+    ]{Songti SC}
+  \setCJKsansfont[BoldFont=* Medium]{Heiti SC}
+  \setCJKfamilyfont{zhsong}[
+         UprightFont = * Light,
+            BoldFont = * Bold,
+    ]{Songti SC}
+  \setCJKfamilyfont{zhhei}[BoldFont=* Medium]{Heiti SC}
+  \setCJKfamilyfont{zhkai}[BoldFont=* Bold]{Kaiti SC}
+  \xeCJKsetwidth{‘’“”}{1em}
+}{}
+%    \end{macrocode}
+%
+% \begin{macro}{\normalsize}
+% 正文小四号 (12bp) 字，行距为固定值 20 bp。
+% \sout{暂时删除}
+%    \begin{macrocode}
+%\renewcommand\normalsize{%
+%  \@setfontsize\normalsize{12bp}{20bp}%
+%  \abovedisplayskip=12bp \@plus 2bp \@minus 2bp
+%  \abovedisplayshortskip=12bp \@plus 2bp \@minus 2bp
+%  \belowdisplayskip=\abovedisplayskip
+%  \belowdisplayshortskip=\abovedisplayshortskip}
+%    \end{macrocode}
+% \end{macro}
+%
+% WORD 中的字号对应该关系如下（1bp = 72.27/72 pt）:
+% \begin{center}
+% \begin{tabular}{llll}
+% \toprule
+% 初号 & 42bp & 14.82mm & 42.1575pt \\
+% 小初 & 36bp & 12.70mm & 36.135 pt \\
+% 一号 & 26bp & 9.17mm & 26.0975pt \\
+% 小一 & 24bp & 8.47mm & 24.09pt \\
+% 二号 & 22bp & 7.76mm & 22.0825pt \\
+% 小二 & 18bp & 6.35mm & 18.0675pt \\
+% 三号 & 16bp & 5.64mm & 16.06pt \\
+% 小三 & 15bp & 5.29mm & 15.05625pt \\
+% 四号 & 14bp & 4.94mm & 14.0525pt \\
+% 小四 & 12bp & 4.23mm & 12.045pt \\
+% 五号 & 10.5bp & 3.70mm & 10.59375pt \\
+% 小五 & 9bp & 3.18mm & 9.03375pt \\
+% 六号 & 7.5bp & 2.56mm & \\
+% 小六 & 6.5bp & 2.29mm & \\
+% 七号 & 5.5bp & 1.94mm & \\
+% 八号 & 5bp & 1.76mm & \\\bottomrule
+% \end{tabular}
+% \end{center}
+%
+% \begin{macro}{\nwafu@def@fontsize}
+% 根据习惯定义字号。用法：
+%
+% \cs{nwafu@def@fontsize}\marg{字号名称}\marg{磅数}
+%
+% 避免了字号选择和行距的紧耦合。所有字号定义时为单倍行距，并提供选项指定行距倍数。
+%    \begin{macrocode}
+\def\nwafu@def@fontsize#1#2{%
+  \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
+    \fontsize{#2}{##1\dimexpr #2}\selectfont}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\chuhao}
+% \begin{macro}{\xiaochu}
+% \begin{macro}{\yihao}
+% \begin{macro}{\xiaoyi}
+% \begin{macro}{\erhao}
+% \begin{macro}{\xiaoer}
+% \begin{macro}{\sanhao}
+% \begin{macro}{\xiaosan}
+% \begin{macro}{\sihao}
+% \begin{macro}{\banxiaosi}
+% \begin{macro}{\xiaosi}
+% \begin{macro}{\dawu}
+% \begin{macro}{\wuhao}
+% \begin{macro}{\xiaowu}
+% \begin{macro}{\liuhao}
+% \begin{macro}{\xiaoliu}
+% \begin{macro}{\qihao}
+% \begin{macro}{\bahao}
+% 一组字号定义。TODO：用 \cs{zihao} 替代。
+%    \begin{macrocode}
+\nwafu@def@fontsize{chuhao}{42bp}
+\nwafu@def@fontsize{xiaochu}{36bp}
+\nwafu@def@fontsize{yihao}{26bp}
+\nwafu@def@fontsize{xiaoyi}{24bp}
+\nwafu@def@fontsize{erhao}{22bp}
+\nwafu@def@fontsize{xiaoer}{18bp}
+\nwafu@def@fontsize{sanhao}{16bp}
+\nwafu@def@fontsize{xiaosan}{15bp}
+\nwafu@def@fontsize{sihao}{14bp}
+\nwafu@def@fontsize{banxiaosi}{13bp}
+\nwafu@def@fontsize{xiaosi}{12bp}
+\nwafu@def@fontsize{dawu}{11bp}
+\nwafu@def@fontsize{wuhao}{10.5bp}
+\nwafu@def@fontsize{xiaowu}{9bp}
+\nwafu@def@fontsize{liuhao}{7.5bp}
+\nwafu@def@fontsize{xiaoliu}{6.5bp}
+\nwafu@def@fontsize{qihao}{5.5bp}
+\nwafu@def@fontsize{bahao}{5bp}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \subsubsection{语言设置}
+%
+% \newcommand\unicodechar[1]{U+#1（\symbol{"#1}）}
+% 由于 Unicode 的一些标点符号是中西文混用的：
+% \unicodechar{00B7}、
+% \unicodechar{2013}、
+% \unicodechar{2014}、
+% \unicodechar{2018}、
+% \unicodechar{2019}、
+% \unicodechar{201C}、
+% \unicodechar{201D}、
+% \unicodechar{2025}、
+% \unicodechar{2026}、
+% \unicodechar{2E3A}，
+% 所以要根据语言设置正确的字体。
+% \footnote{\url{https://ginwafub.com/CTeX-org/ctex-kit/issues/389}}
+% 所以要根据语言设置正确的字体。
+%    \begin{macrocode}
+\newcommand\nwafu@setchinese{%
+  \xeCJKResetPunctClass
+}
+\newcommand\nwafu@setenglish{%
+  \xeCJKDeclareCharClass{HalfLeft}{"2018, "201C}%
+  \xeCJKDeclareCharClass{HalfRight}{
+    "00B7, "2019, "201D, "2013, "2014, "2025, "2026, "2E3A,
+  }%
+}
+\newcommand\nwafu@setdefaultlanguage{%
+  \ifnwafu@lang@cn
+    \nwafu@setchinese
+  \else
+    \nwafu@setenglish
+  \fi
+}
+%    \end{macrocode}
+%
+% \subsubsection{文档组成声明}
+% \LaTeX 文档可以拆分成 \mac{frontmatter}, \mac{mainmatter}, \mac{appendix}, \mac{backmatter}
+% 并由这些宏来调整文档格式。本文档类也需要利用这些信息来调整文档格式，
+% 于是重新定义了这些宏。
+%
+% \sout{不明白为什么要将参考文献、附录、致谢的章标题格式设置为与其
+% 它章节不一样！应该改成一样，这样的话模板会更好设计一些。}
+%
+%    \begin{macrocode}
+\newif\if@frontmatter
+\newif\if@backmatter
+\newif\if@appendix
+\newif\if@biblio
+\let\nwafu@frontmatter\frontmatter
+\let\nwafu@mainmatter\mainmatter
+\let\nwafu@appendix\appendix
+\let\nwafu@backmatter\backmatter
+\renewcommand{\frontmatter}{
+  \nwafu@frontmatter
+  \@frontmattertrue
+  \@backmatterfalse
+  \@appendixfalse
+  \ifnwafu@bachelor\pagenumbering{roman}\else\pagenumbering{Roman}\fi
+  \pagestyle{style@main}
+}
+\renewcommand{\mainmatter}{
+  \nwafu@mainmatter
+  \@frontmatterfalse
+  \@backmatterfalse
+  \@appendixfalse
+  \@mainmattertrue
+  \pagenumbering{arabic}
+  \pagestyle{style@main}
+  \setlength\leftskip{\nwafuparleft}
+}
+\newcommand{\bibliomatter}{
+  %\if@openright\cleardoublepage\else\clearpage\fi
+  \nwafu@backmatter
+  \@frontmatterfalse
+  \@backmatterfalse
+  \@appendixfalse
+  \@mainmatterfalse
+  \@bibliotrue
+  %\pagestyle{style@biblio}
+  \titleformat{\chapter}
+    {\centering\linespread{1.0}\nwafu@font@title\zihao{4}}%\fontsize{15.75bp}{20.0bp}\selectfont}
+    {\nwafu@chaptername}{1em}{} 
+  \titlespacing*{\chapter}{0pt}{10bp}{10bp} 
+  \setlength\nwafuparleft{0pt}
+  \setlength\leftskip{\nwafuparleft}  
+}
+\renewcommand{\appendix}{
+ %\if@openright\cleardoublepage\else\clearpage\fi 
+ \nwafu@appendix
+ \@frontmatterfalse
+ \@backmatterfalse
+ \@appendixfalse
+ \@mainmattertrue
+ \@bibliofalse
+ \pagestyle{style@appendix}
+ \titleformat{\chapter}
+   {\centering\linespread{1.0}\nwafu@font@title\zihao{4}}%\fontsize{15.75bp}{20.0bp}\selectfont}
+   {\nwafu@chaptername}{1em}{} 
+ \titlespacing*{\chapter}{0pt}{10bp}{10bp} 
+ \setlength\nwafuparleft{0pt}
+ \setlength\leftskip{\nwafuparleft}
+}
+\renewcommand{\backmatter}{
+  %\if@openright\cleardoublepage\else\clearpage\fi
+  \nwafu@backmatter
+  \@frontmatterfalse
+  \@backmattertrue
+  \@appendixfalse
+  \@mainmatterfalse
+  \@bibliofalse
+  %\fancyhead[C]{致谢}%
+  %\pagestyle{style@back} 
+  \titleformat{\chapter}
+    {\centering\linespread{1.0}\nwafu@font@title\zihao{4}}%\fontsize{15.75bp}{20.0bp}\selectfont}
+    {\nwafu@chaptername}{1em}{}
+  \titlespacing*{\chapter}{0pt}{10bp}{10bp}  
+  \setlength\nwafuparleft{0pt}
+  \setlength\leftskip{\nwafuparleft}  
+}
+%    \end{macrocode}
+%
+% \subsubsection{段落左侧缩进}
+%
+% 这个功能只适配了部分定理环境、列表项，所有会改动段落缩进的地方都需要单独适配；
+% 可以参考本模板中 \cs{nwafufontparleft} 的用法，来适配您所需要的环境。
+% \begin{macro}{\nwafuparleft}
+% 定义段落左侧缩进量，备用功能，实无缩进。
+%    \begin{macrocode}
+\newlength\nwafuparleft
+\ifnwafu@bachelor
+  \setlength\nwafuparleft{0pt}%2\ccwd
+\else
+  \setlength\nwafuparleft{0pt}
+\fi
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\nwafufontparleft}
+% 然后在字体设置的地方，使用这个宏来实现段落缩进。
+%    \begin{macrocode}
+\newcommand\nwafufontparleft{
+  \addtolength\@totalleftmargin{\nwafuparleft}
+  \addtolength\linewidth{-\nwafuparleft}
+  \parshape 1 \nwafuparleft \linewidth
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% 全文首行缩进 2 字符，标点符号用全角
+%    \begin{macrocode}
+\ctexset{%
+  punct=quanjiao,
+  space=auto,
+  autoindent=true
+}
+%    \end{macrocode}
+%
+% \subsubsection{页边距}
+% 本节使用 \pkg{geometry} 来设置页边距，适用于大部分页面，
+% 封面、承诺书等特殊页面的页边距将单独设置。
+%
+% \texttt{headheight}和\texttt{footskip}是五号字的行高（考虑文档网络），
+% $\texttt{headsep} = 3.3\text{cm}-2.6\text{cm}-15.6\text{pt} \approx 0.15\text{cm}$。
+%    \begin{macrocode}
+\ifnwafu@bachelor \geometry{
+  top=3.0cm,
+  bottom=2.0cm,
+  left=2.5cm,
+  right=2.5cm,
+  headheight=2.0cm,
+  headsep=2bp,
+  footskip=1.0cm
+} \else \geometry{
+  top=3.3cm,
+  bottom=3.3cm,
+  left=3.0cm,
+  right=2.8cm,
+  headheight=15.6bp,
+  headsep=0.15cm,
+  footskip=15.6bp
+}
+\fi
+%    \end{macrocode}
+% \subsubsection{页眉页脚}
+% 本节利用 \pkg{fancyhdr} 来设置页眉页脚的样式。
+%
+% 页脚用的页码修饰，本科正文和附录部分的页码，与目录里的页码格式不一样，
+% 这里提供一个宏来定义页脚的页码格式。
+%    \begin{macrocode}
+\newcommand\nwafu@footerpagenum@decorate[1]{%
+\ifnwafu@bachelor%
+  \if@frontmatter{#1}\else{- #1 -}\fi%
+\else%
+  {#1}%
+\fi%
+}
+%    \end{macrocode}
+%
+% 定义空白的页眉页脚，用于封面页和空白页。
+%    \begin{macrocode}
+\fancypagestyle{style@empty}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+%    \end{macrocode}
+%
+% 定义正文页眉页脚。为了在 |oneside| 模式下，页眉也能奇偶页不同，
+% 因此不能用 \cs{fancyhead} 的 |EC| |OC| 选项，而是在代码里判断页码的奇偶性，输出对应的内容。
+%    \begin{macrocode}
+\fancypagestyle{style@main}{
+  \fancyhead{}
+  \ifnwafu@bachelor
+    \fancyhead[C]{
+      \ifodd\value{page}
+      {
+        \mbox{\songti\zihao{5}\leftmark}
+      }
+      \else
+      {
+        \mbox{\songti\zihao{5}\nwafu@title}        
+      }
+      \fi
+    }
+  \else
+    \fancyhead[C]{
+      \ifodd\value{page}
+      {
+        \mbox{\songti\zihao{5}\nwafu@university\nwafu@worktypecn}
+      }
+      \else
+      {
+        \mbox{\zihao{5}\nwafu@title}
+      }
+      \fi
+    }
+  \fi
+  \fancyfoot{}
+  \if@twoside
+    \fancyfoot[C]{\footnotesize{\nwafu@footerpagenum@decorate{\thepage}}}
+  \else
+    \fancyfoot[C]{\footnotesize{\nwafu@footerpagenum@decorate{\thepage}}}
+  \fi
+  \renewcommand{\headrulewidth}{0.75bp}
+  %\ifnwafu@bachelor
+  %  \renewcommand{\footrulewidth}{0.75bp}
+  %\fi
+}
+%    \end{macrocode}
+%
+% 定义biblio的页眉页脚。为了在 |oneside| 模式下，页眉也能奇偶页不同，
+% 因此不能用 \cs{fancyhead} 的 |EC| |OC| 选项，而是在代码里判断页码的奇偶性，输出对应的内容。
+%    \begin{macrocode}
+\fancypagestyle{style@biblio}{
+  \fancyhead{}
+  \ifnwafu@bachelor    
+    \fancyhead[C]{
+      \ifodd\value{page}
+      {
+        \mbox{\songti\zihao{5}\bibname}
+      }
+      \else
+      {
+        \mbox{\songti\zihao{5}\bibname}
+      }
+      \fi
+    }    
+  \else
+    \fancyhead[C]{
+      \ifodd\value{page}
+      {
+        \mbox{\songti\zihao{5}\nwafu@university\nwafu@worktypecn}
+      }
+      \else
+      {
+        \mbox{\zihao{5}\nwafu@title}
+      }
+      \fi
+    }
+  \fi
+  \fancyfoot{}
+  \if@twoside
+    \fancyfoot[C]{\footnotesize{\nwafu@footerpagenum@decorate{\thepage}}}
+  \else
+    \fancyfoot[C]{\footnotesize{\nwafu@footerpagenum@decorate{\thepage}}}
+  \fi
+  \renewcommand{\headrulewidth}{0.75bp}
+  %\ifnwafu@bachelor
+  %  \renewcommand{\footrulewidth}{0.75bp}
+  %\fi
+}
+%    \end{macrocode}
+%
+% 定义appendix的页眉页脚。为了在 |oneside| 模式下，页眉也能奇偶页不同，
+% 因此不能用 \cs{fancyhead} 的 |EC| |OC| 选项，而是在代码里判断页码的奇偶性，输出对应的内容。
+%    \begin{macrocode}
+\fancypagestyle{style@appendix}{
+  \fancyhead{}
+  \ifnwafu@bachelor
+    \renewcommand{\chaptermark}[1]{%
+      \markboth{\@chapapp}{}}
+    \fancyhead[C]{
+      \ifodd\value{page}
+      {
+        \mbox{\songti\zihao{5}\leftmark}
+      }
+      \else
+      {
+        \mbox{\songti\zihao{5}\leftmark}
+      }
+      \fi
+    }    
+  \else
+    \fancyhead[C]{
+      \ifodd\value{page}
+      {
+        \mbox{\songti\zihao{5}\nwafu@university\nwafu@worktypecn}
+      }
+      \else
+      {
+        \mbox{\zihao{5}\nwafu@title}
+      }
+      \fi
+    }
+  \fi
+  \fancyfoot{}
+  \if@twoside
+    \fancyfoot[C]{\footnotesize{\nwafu@footerpagenum@decorate{\thepage}}}
+  \else
+    \fancyfoot[C]{\footnotesize{\nwafu@footerpagenum@decorate{\thepage}}}
+  \fi
+  \renewcommand{\headrulewidth}{0.75bp}
+  %\ifnwafu@bachelor
+  %  \renewcommand{\footrulewidth}{0.75bp}
+  %\fi
+}
+%    \end{macrocode}
+%
+% 定义backmatter的页眉页脚。为了在 |oneside| 模式下，页眉也能奇偶页不同，
+% 因此不能用 \cs{fancyhead} 的 |EC| |OC| 选项，而是在代码里判断页码的奇偶性，输出对应的内容。
+%    \begin{macrocode}
+\fancypagestyle{style@back}{
+  \fancyhead{}
+  \ifnwafu@bachelor
+    %\renewcommand{\chaptermark}[1]{%
+    % \markboth{##1}{}}    
+    \fancyhead[C]{
+      \ifodd\value{page}
+      {
+        \mbox{\songti\zihao{5}\leftmark}
+      }
+      \else
+      {
+        \mbox{\songti\zihao{5}\leftmark}
+      }
+      \fi
+    }
+  \else
+    \fancyhead[C]{
+      \ifodd\value{page}
+      {
+        \mbox{\songti\zihao{5}\nwafu@university\nwafu@worktypecn}
+      }
+      \else
+      {
+        \mbox{\zihao{5}\nwafu@title}
+      }
+      \fi
+    }
+  \fi
+  \fancyfoot{}
+  \if@twoside
+    \fancyfoot[C]{\footnotesize{\nwafu@footerpagenum@decorate{\thepage}}}
+  \else
+    \fancyfoot[C]{\footnotesize{\nwafu@footerpagenum@decorate{\thepage}}}
+  \fi
+  \renewcommand{\headrulewidth}{0.75bp}
+  %\ifnwafu@bachelor
+  %  \renewcommand{\footrulewidth}{0.75bp}
+  %\fi
+}
+%    \end{macrocode}
+%
+% \subsubsection{章节标题}
+%
+%    \begin{macrocode}
+\ifnwafu@lang@cn
+  \ctexset{%    
+    appendixname=附录,
+    contentsname={目\hspace{\ccwd}录},
+    listfigurename=插图索引,
+    listtablename=表格索引,
+    figurename=图,
+    tablename=表,
+    bibname=参考文献,
+    indexname=索引,
+  }
+  \newcommand\listequationname{公式索引}
+  \newcommand\equationname{式}
+\else
+  \newcommand\listequationname{List of Equations}
+  \newcommand\equationname{Equation}
+\fi
+\ifnwafu@bachelor
+  \newcommand{\cabstractname}{摘要}
+  \newcommand{\eabstractname}{Abstract}
+\else
+  \newcommand{\cabstractname}{摘\hspace{\ccwd}要}
+  \newcommand{\eabstractname}{Abstract}
+\fi
+\let\CJK@todaysave=\today
+\def\CJK@todaysmall@short{\the\year 年 \the\month 月}
+\def\CJK@todaysmall{\the\year 年 \the\month 月 \the\day 日}
+\def\CJK@todaybig@short{\zhdigits{\the\year}年\zhnumber{\the\month}月}
+\def\CJK@todaybig{\zhdigits{\the\year}年\zhnumber{\the\month}月\zhnumber{\the\day}日}
+\def\CJK@today{\CJK@todaysmall}
+\renewcommand\today{\CJK@today}
+\newcommand\CJKtoday[1][1]{%
+  \ifcase#1\def\CJK@today{\CJK@todaysave}
+    \or\def\CJK@today{\CJK@todaysmall}
+    \or\def\CJK@today{\CJK@todaybig}
+  \fi}
+%    \end{macrocode}
+%
+% \pkg{fancyhdr} 定义页眉页脚很方便，但是有一个非常隐蔽的坑。通过 \pkg{fancyhdr}
+% 定义的样式在第一次被调用时会修改 \cs{chaptermark}，这会导致页眉信息错误（多余
+% 章号并且英文大写）。这是因为在原始的 \file{book.cls} 中定义如下（大意）：
+% \begin{latex}
+% \newcommand\chaptername{Chapter}
+% \newcommand\@chapapp{\chaptername}
+% \def\chaptermark#1{
+%   \markboth{\MakeUppercase{\@chapapp\ \thechapter}}{}}
+% \end{latex}
+% 很显然这个 \cs{\@chapapp} 不适合中文，因此我们使用\cs{CTEXthechapter}（
+% 如，“第 x 章”），同时会将 \cs{MakeUppercase} 去掉。也就是说我们会做如下动作：
+% \begin{latex}
+% \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}
+% \end{latex}
+% 但，\pkg{fancyhdr} 不知何故在 \cs{ps@fancy} 中对 \cs{chaptermark} 进行重定义
+% （其实一模一样），而这个 \cs{ps@fancy} 会在 \cs{fancypagestyle} 中使用，如下：
+% \begin{latex}
+% \newcommand{\fancypagestyle}[2]{%
+%   \@namedef{ps@#1}{\let\fancy@gbl\relax#2\relax\ps@fancy}}
+% \end{latex}
+% 这样的话，\cs{ps@fancy} 会在 \pkg{fancyhdr} 定义的任何样式首次样被激活时调用，从
+% 而覆盖我们的 \cs{chaptermark} 定义（后续样式再激活不会重复覆盖）。所以我们采用如下
+% 方法解决：
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \pagestyle{style@empty}
+  \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\hskip\ccwd#1}{}}}
+%    \end{macrocode}
+%
+% 各级标题格式设置。
+% \begin{description}
+% \item[chapter] 章序号与章名之间空一个汉字符 黑体三号字，居中书写，单倍行距，段
+%   前段后0.5行。
+%
+% \item[section] 一级节标题，例如：\fbox{2.1 实验装置与实验方法}。节标题序号与标
+%   题名之间空一个汉字符（下同）。采用黑体四号（14pt）字居左段前空两字书写，行距为固定
+%   值 20 磅，段前后0.5行。
+%
+% \item[subsection] 二级节标题，例如：\fbox{2.1.1 实验装置}。采用黑体小四号(要求是宋体加粗，
+%   但LaTeX中无宋体加粗，用黑体替代) 字居左段前空两字
+%   书写，行距为固定值 20 磅，段前后空0.5行。
+%
+% \item[subsubsection] 三级节标题，例如：\fbox{（1）归纳法}。采用宋体小四号
+%   字居左段前空两字书写，行距为固定值 20 磅，段前后为0.5行。
+%   \sout{要求括号为中文状态下半角括号，但个人认为英文半角会更好看，待确定后再修改}
+%
+% \end{description}
+%    \begin{macrocode}
+\newcommand\nwafu@chapter@titleformat[1]{%
+  \ifnwafu@bachelor #1\else%
+    \ifthenelse%
+      {\equal{#1}{\eabstractname}}%
+      {\bfseries #1}%
+      {#1}%
+  \fi}
+\ctexset{%
+  chapter={
+    name={第,章},
+    number=\arabic{chapter},
+    afterindent=true,
+    pagestyle={style@main},
+    beforeskip={\ifnwafu@bachelor 10bp\else 20bp\fi},
+    aftername=\hskip\ccwd,
+    afterskip={\ifnwafu@bachelor 10bp\else 20bp\fi},
+    format={\centering\sffamily\nwafu@font@title\ifnwafu@bachelor\zihao{3}\else\zihao{3}\fi},
+    nameformat=\relax,
+    numberformat=\relax,
+    titleformat=\nwafu@chapter@titleformat,
+    lofskip=0pt,
+    lotskip=0pt,
+  },
+  section={
+    afterindent=true,
+    beforeskip={\ifnwafu@bachelor 8bp\else 20bp\fi\@plus 1ex \@minus .2ex},
+    afterskip={\ifnwafu@bachelor 8bp\else 20bp\fi\@plus 1ex \@minus .2ex},
+    format={\sffamily\nwafu@font@title\ifnwafu@bachelor\zihao{4}\else\zhihao{4}\fi},
+    %indent=2\ccwd,
+  },
+  subsection={
+    afterindent=true,
+    beforeskip={\ifnwafu@bachelor 8bp\else 16bp\fi\@plus 1ex \@minus .2ex},
+    afterskip={\ifnwafu@bachelor 8bp\else 16bp\fi\@plus 1ex \@minus .2ex},
+    format={\sffamily\nwafu@font@title\ifnwafu@bachelor\zihao{-4}\else\zihao{-4}\fi},
+    %numberformat={\sffamily\ifnwafu@bachelor\banxiaosi[1.154]\else\banxiaosi[1.538]\fi},
+    indent=2\ccwd,
+  },
+  subsubsection={
+    name={（,）},
+    number= \arabic{subsubsection},
+    afterindent=true,
+    beforeskip={\ifnwafu@bachelor 8bp\else 16bp\fi\@plus 1ex \@minus .2ex},
+    afterskip={8bp \@plus .2ex},
+    format={\sffamily\songti\ifnwafu@bachelor\zihao{-4}\else\zihao{-4}\fi},
+    indent=2\ccwd,
+  },
+  paragraph/afterindent=true,
+  subparagraph/afterindent=true
+}
+%    \end{macrocode}
+%
+% \begin{macro}{\nwafu@chapter*}
+% 默认的 \cs{chapter*} 很难同时满足研究生院和本科生的论文要求。本科论文要求所有的
+% 章都出现在目录里，比如摘要、Abstract、主要符号表等，所以可以简单的扩展默
+% 认\cs{chapter*} 实现这个目的。但是研究生又不要这些出现在目录中，而且致谢和声明
+% 部分的章名、页眉和目录都不同，所以定义一个灵活的 \cs{nwafu@chapter*} 专门处理这些
+% 要求。
+%
+% \cs{nwafu@chapter*}\oarg{tocline}\marg{title}\oarg{header}: tocline 是出现在目录
+% 中的条目，如果为空则此 chapter 不出现在目录中，如果省略表示目录出现 title；
+% title 是章标题；header 是页眉出现的标题，如果忽略则取 title。通过这个宏我才真
+% 正体会到 \TeX\ macro 的力量！
+%    \begin{macrocode}
+\newcounter{nwafu@bookmark}
+\NewDocumentCommand\nwafu@chapter{s o m o}{
+  \IfBooleanF{#1}{%
+    \ClassError{nwafuthesis}{You have to use the star form: \string\nwafu@chapter*}{}
+  }%
+  \if@openright\cleardoublepage\else\clearpage\fi\phantomsection%
+  \IfValueTF{#2}{%
+    \ifthenelse{\equal{#2}{}}{%
+      \addtocounter{nwafu@bookmark}\@ne
+      \pdfbookmark[0]{#3}{nwafuchapter.\thenwafu@bookmark}
+    }{%
+      \addcontentsline{toc}{chapter}{#3}
+    }
+  }{%
+    \addcontentsline{toc}{chapter}{#3}
+  }%
+  \ifnwafu@bachelor \ctexset{chapter/beforeskip=25bp} \fi
+  \chapter*{#3}%
+  \ifnwafu@bachelor \ctexset{chapter/beforeskip=15bp} \fi
+  \IfValueTF{#4}{%
+    \ifthenelse{\equal{#4}{}}
+    {\@mkboth{}{}}
+    {\@mkboth{#4}{#4}}
+  }{%
+    \@mkboth{#3}{#3}
+  }
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% 正文中对大标题~三级标题（subsubsection）进行编号。
+%    \begin{macrocode}
+\setcounter{secnumdepth}{3}
+%    \end{macrocode}
+%
+% \subsubsection{目录}
+% 本节利用 \pkg{titletoc} 来设置目录的格式，包括正文目录和图表的目录。
+%    \begin{macrocode}
+\ifnwafu@lang@en
+  \titlecontents{chapter}[5pc]
+    {\nwafu@font@toc}
+    {\contentslabel[\chaptername~\thecontentslabel]{5pc}}
+    {\renewcommand\thecontentslabel{\relax}\hspace*{-5pc}}
+    {\titlerule*[1ex]{.}\contentspage}
+\else
+  \titlecontents{chapter}[3.5pc]
+    {\nwafu@font@toc}
+    {\contentslabel[\thecontentslabel]{3.5pc}}
+    {\hspace*{-3.5pc}}
+    {\titlerule*[1ex]{.}\contentspage}
+\fi
+\titlecontents{section}[3pc]
+  {\nwafu@font@toc}
+  {\contentslabel[\thecontentslabel]{2pc}}
+  {}
+  {\titlerule*[1ex]{.}\contentspage}
+\titlecontents{subsection}[5pc]
+  {\nwafu@font@toc}
+  {\contentslabel[\thecontentslabel]{3pc}}
+  {}
+  {\titlerule*[1ex]{.}\contentspage}
+\titlecontents{figure}[\nwafu@indentloft]
+  {\nwafu@font@toc}
+  {\contentslabel[\figurename~\thecontentslabel]{\nwafu@indentloft}}
+  {\figurename}
+  {\titlerule*[1ex]{.}\contentspage}
+\titlecontents{table}[\nwafu@indentloft]
+  {\nwafu@font@toc}
+  {\contentslabel[\tablename~\thecontentslabel]{\nwafu@indentloft}}
+  {\tablename}
+  {\titlerule*[1ex]{.}\contentspage}
+%    \end{macrocode}
+% \subsubsection{参考文献}
+%    \begin{macrocode}
+%
+% 表示范围的波浪线符号
+\DefineBibliographyExtras{english}{\renewcommand*{\bibrangedash}{$\sim$}}
+%
+% 设置全局字体
+\newcommand\nwafu@font@bib{\zihao{-5}}%\linespread{1.0}
+\renewcommand{\bibfont}{\nwafu@font@bib}%\fangsong
+%
+% 英文刊名用斜体(应该是学校不合理要求)
+\DeclareFieldFormat[article]{journaltitle}{\iffieldequalstr{userd}{chinese}{#1}{\textit{#1}}\isdot}%
+%
+% \parencite命令引用标注后导分割符
+\renewcommand{\postnotedelim}{\addcolon\space}
+%
+% 删除\parencite命令引用标注中有页码选项时的p. pp.字符
+\DeclareFieldFormat{postnote}{#1}
+%
+% 引用标注作者年制中作者和年份之间的标点(GB/T 7714-2015示例为逗号",")
+\renewcommand*{\nameyeardelim}{\space}
+%
+% 文献著录列表中作者与年之间的分割符(GB/T 7714-2015示例为逗号",")
+\DeclareDelimFormat[bib,biblist]{nameyeardelim}{\addperiod\space}
+%
+%   修改一些当地化字符串(摘录于gb7714-2015.bbx)
+%
+%   原理方法:直接利用当地化格式english修改出一些中文的格式，具体修改内容参考english.lbx文件
+%   当然也可以增加比如上面定义的andotherscn
+%   注意:在lbx文件和bbx文件中定义本地字符串的不同语法，两个参数和一个参数的区别
+\DefineBibliographyStrings{english}{
+    %and         = {\addcomma},%将第2和3人名见的and符号改成 逗号，用\finalnamedelim命令也可以定义，参见3.9.1节
+    %andcn       = {\addcomma},%\str@andcn\ and本地化字符串的中文对应词
+    andincitecn = {和},%将标注中的分开，便于与文献表中的区分
+    andincite   = {and},
+    mathesiscn={[硕士学位论文]},
+    phdthesiscn={[博士学位论文]},
+    in={In:\addspace},
+    incn={见:\addspace},
+}
+%
+%
+%   修改最后一个作者前的字符串，比如 and(摘录于gb7714-2015.bbx)
+%   v1.0o,20190103,hzz
+%
+%   原理方法:默认情况下判断作者或译者是否中文，若中文用字符andcn=“和”，否则用and=“and”。
+%   非默认情况，根据选项信息，选择选择强制中文或英文
+%   首先设置全局的，然后设置文献表中的，这一等价于将所有的cite命令环境都设置过了
+%   而不用对每一个引用命令单独设置，比如cite，parancite，textcite都设置
+\DeclareDelimFormat{finalnamedelim}{%
+  \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+  %\addspace%
+  \edef\userfieldabcde{userd}%
+  \ifcurrentname{translator}{\edef\userfieldabcde{usere}}{}%
+  \ifcurrentname{editor}{\edef\userfieldabcde{userc}}{}%
+  \ifcurrentname{author}{\edef\userfieldabcde{userf}}{}%
+  \ifcurrentname{bookauthor}{\edef\userfieldabcde{userb}}{}%
+  \ifcase\value{gbcitelocalcase}%
+    \iffieldequalstr{\userfieldabcde}{chinese}{\bibstring{andincitecn}}{}%
+    \iffieldequalstr{\userfieldabcde}{korean}{\bibstring{andkr}}{}%
+    \iffieldequalstr{\userfieldabcde}{japnese}{\bibstring{andjp}}{}%
+    \iffieldequalstr{\userfieldabcde}{english}{\addspace\bibstring{andincite}\addspace}{}%
+    \iffieldequalstr{\userfieldabcde}{french}{\addspace\bibstring{and}\addspace}{}%
+    \iffieldequalstr{\userfieldabcde}{russian}{\addspace\bibstring{and}\addspace}{}%
+%\space%
+  \or%
+  \bibstring{andincitecn}%
+  \or%
+  \addspace\bibstring{andincite}\addspace%
+  \fi
+}
+%
+%----------------------------------------------------------------------
+%
+% -new added  20190215， 胡振震邮件指导代码
+% 去掉超过3个著者时汉字“等”前的空格(GB/T 7714-2015规定需要有空格)
+\DeclareDelimFormat{strandothersdelim}{%
+  \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+  %\addspace%
+  \edef\userfieldabcde{userd}%
+  \ifcurrentname{translator}{\edef\userfieldabcde{usere}}{}%
+  \ifcurrentname{editor}{\edef\userfieldabcde{userc}}{}%
+  \ifcurrentname{author}{\edef\userfieldabcde{userf}}{}%
+  \ifcurrentname{bookauthor}{\edef\userfieldabcde{userb}}{}%
+  \ifcase\value{gbcitelocalcase}%
+    \iffieldequalstr{\userfieldabcde}{chinese}{\bibstring{andothersincitecn}}{}%中文已经通过english本地化字符串定义
+    \iffieldequalstr{\userfieldabcde}{korean}{\bibstring{andotherskr}}{}%韩语未定义，所以与bib中一致
+    \iffieldequalstr{\userfieldabcde}{japnese}{\bibstring{andothersjp}}{}%日与同韩语
+    \iffieldequalstr{\userfieldabcde}{english}{\bibstring{andothersincite}}{}%英语已定义
+    \iffieldequalstr{\userfieldabcde}{french}{\bibstring{andothers}}{}%法语未定义，若要定义需要针对french本地化字符串定义
+    \iffieldequalstr{\userfieldabcde}{russian}{\bibstring{andothers}}{}%俄语未定义，若要定义需要针对russian本地化字符串定义
+  \or%
+  \bibstring{andothersincitecn}%
+  \or%
+  \bibstring{andothersincite}%
+  \fi
+}
+%
+% 之所以不用\DeclareDelimFormat{andothersdelim}{}这样的设置是因为
+% gb7714-2015中为兼容老版本的biblatex做的处理就是这样的
+% 所以用相同的方式
+\AtEveryCitekey{%
+  \iffieldequalstr{userf}{chinese}{\renewcommand*{\andothersdelim}{}}%\addthinspace
+  {\renewcommand*{\andothersdelim}{\addspace}}%
+}
+%
+% 标注压缩时，直接用date+extradate代替extradate实现2006a，2006b的效果
+\newbibmacro*{cite:extradate}{%
+  \iffieldundef{extradate} {}
+  {\printtext[bibhyperref]{\printlabeldateextra}}%\printfield{extradate}
+}
+%
+% 文献表中的日期格式
+\renewbibmacro*{date+extradate}{%
+  \iffieldundef{labelyear}{}%
+  {\ifboolexpr{%
+      test {\ifentrytype{patent}}
+      or
+      (test {\ifentrytype{newspaper}})%
+    }%
+    {\printtext{\blx@isodate{}{}}}%
+    {\printtext{%
+        \iflabeldateisdate {\printdateextra} {\printlabeldateextra}}}%
+  }%
+}
+%
+% url和url日期格式
+%
+\renewbibmacro*{url+urldate}{%
+  % \usebibmacro{url}%%更换url的位置，放到下面
+  \usebibmacro{url}%
+  \iffieldundef{urlyear}%
+  {}
+  {%\setunit*{\addspace}%
+    \usebibmacro{urldate}
+  }
+}
+%
+\DeclareFieldFormat{addnumflag}{%
+  \ifentrytype{newspaper}
+  {\setunit{\addcomma\addspace}\printtext{#1}}
+  {\nobreak\printtext{(}\nobreak #1\nobreak\printtext{)}}
+}
+%
+%   重设专利title的输出，将文献类型标识符输出出去
+%
+\newbibmacro*{patenttitle}{%原输出来自biblatex.def文件
+  \ifboolexpr{%
+    test{\iffieldundef{title}}%
+    and%
+    test{\iffieldundef{subtitle}}%
+  }%
+  {}%
+  {
+    \printtext[title]{\bibtitlefont%
+    \printfield[titlecase]{title}%
+    \ifboolexpr{test {\iffieldundef{subtitle}}}%这里增加了对子标题的判断，解决不判断多一个点的问题
+    {}
+    {
+      \setunit{\subtitlepunct}%
+      \printfield[titlecase]{subtitle}}%
+      \iffieldundef{titleaddon}{}%判断一下titleaddon，否则直接加可能多一个空格
+      {\setunit{\subtitlepunct}\printfield{titleaddon}}%
+      \setunit{\adddot\addspace}\printfield{number}%写专利号
+      \iftoggle{bbx:gbtype}{\printfield[gbtypeflag]{usera}}{}%
+     %\iffieldundef{booktitle}{\newunit}{}%当title是析出时，不要标点
+     %\newunit
+    }%
+  }%
+}
+%
+%   在线文献驱动
+%
+\DeclareBibliographyDriver{online}{%源来自standard.BBX
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/editor+others/translator+others}%
+  \ifnameundef{author}{}{\setunit{\labelnamepunct}\newblock}%这一段用于去除作者不存在时多出的标点
+  \usebibmacro{title}%
+  \iftoggle{bbx:gbstrict}{}{%
+    \newunit%
+    \printlist{language}%
+    \newunit\newblock
+    \usebibmacro{byauthor}%
+    \newunit\newblock
+    \usebibmacro{byeditor+others}%
+    \newunit\newblock
+    \printfield{note}
+  }%
+  \newunit
+  \printfield{version}%
+  \newunit\newblock
+  % \printlist{organization}%
+  \printlist{institution}%
+  \newunit\newblock
+  \ifboolexpr{%
+    test{\iffieldundef{day}}
+    and
+    test{\iffieldundef{endday}}
+    and
+    test{\iffieldundef{eventday}}%
+  }{\usebibmacro{date}}%
+  %{\usebibmacro{modifydate}}%修改或更新日期，为带括号的时间
+  \usebibmacro{url+urldate}%从下面移上来
+  \newunit\newblock
+  \iftoggle{bbx:eprint}
+    {\usebibmacro{eprint}}
+    {}%
+  \newunit\newblock
+  %\usebibmacro{url+urldate}%
+  %\newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+  {
+    \usebibmacro{related:init}%
+    \usebibmacro{related}
+  }
+  {}%
+  \usebibmacro{finentry}
+}
+%
+%   专利文献驱动
+%
+\DeclareBibliographyDriver{patent}{%源来自standard.BBX
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \ifnameundef{author}{}{\setunit{\labelnamepunct}\newblock}%这一段用于去除作者不存在时多出的标点
+  %\usebibmacro{title}%
+  \usebibmacro{patenttitle}%给出专利专用的标题输出
+  \iftoggle{bbx:gbstrict}{}{%
+    \newunit%
+    \printlist{language}%
+    \newunit\newblock
+    \usebibmacro{byauthor}
+  }%
+  \newunit\newblock
+  \printfield{type}%
+  \setunit*{\addspace}%
+  %\printfield{number}%已放到patenttitle中处理
+  \iflistundef{location}
+  {}
+  {
+    \setunit*{\addspace}%
+    \printtext{%[parens]
+      \printlist[][-\value{listtotal}]{location}
+    }
+  }%
+  \newunit\newblock
+  \usebibmacro{byholder}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  %\usebibmacro{newsdate}%
+  %\newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+  {
+    \usebibmacro{related:init}%
+    \usebibmacro{related}
+  }
+  {}%
+  \usebibmacro{finentry}
+}
+%----------------------------------------------------------------------
+%
+% 间距的控制
+\setlength{\bibitemsep}{2pt}
+\setlength{\bibnamesep}{0ex}
+\setlength{\bibinitsep}{0ex}
+%
+% 文献表中各条文献的缩进控制
+% GB/T 7714-2015样例中无缩进，个人认为首行缩进比较难看
+\setlength{\bibitemindent}{1.5\ccwd} % bibitemindent表示一条文献中第一行相对后面各行的缩进
+\setlength{\bibhang}{0pt} % 作者年制中 bibhang 表示的各行起始位置到页边的距离,顺序编码制中 bibhang+labelnumberwidth 表示各行起始位置到页边的距离
+%    \end{macrocode}
+%
+% \subsection{文档部件}
+% \subsubsection{宏包}
+% 本节将调整一些常用宏包的参数。
+%
+% 表格相关
+%    \begin{macrocode}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\hypersetup{
+  hidelinks,
+  bookmarksnumbered=true,
+}
+%    \end{macrocode}
+% \subsubsection{国际单位}
+% 使用 \pkg{siunitx} 修正
+%    \begin{macrocode}
+\ifxetex
+\RequirePackage{upgreek}
+\sisetup{
+  math-micro = {\upmu},
+  text-micro = {\textmu},
+}
+\fi
+%    \end{macrocode}
+%
+% \subsubsection{数学相关}
+% \label{sec:equation}
+% \begin{macro}{\ldots}
+% 省略号一律居中，所以 \cs{ldots} 不再居于底部。
+%    \begin{macrocode}
+\ifnwafu@lang@cn
+  \def\mathellipsis{\cdots}
+\fi
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\le}
+% \begin{macro}{\ge}
+% \begin{macro}{\leq}
+% \begin{macro}{\geq}
+% 小于等于号要使用倾斜的形式。
+%    \begin{macrocode}
+\protected\def\le{\leqslant}
+\protected\def\ge{\geqslant}
+\AtBeginDocument{%
+  \renewcommand\leq{\leqslant}%
+  \renewcommand\geq{\geqslant}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\Re}
+% \begin{macro}{\Im}
+% 实部、虚部操作符使用罗马体 $\mathrm{Re}$、$\mathrm{Im}$ 而不是 fraktur 体
+% $\Re$、$\Im$。
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \renewcommand{\Re}{\operatorname{Re}}%
+  \renewcommand{\Im}{\operatorname{Im}}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\nabla}
+% \cs{nabla} 使用粗正体。
+%    \begin{macrocode}
+\AtBeginDocument{%
+  \renewcommand\nabla{\mbfnabla}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\bm}
+% \begin{macro}{\boldsymbol}
+% 兼容旧的粗体命令：\pkg{bm} 的 \cs{bm} 和 \pkg{amsmath} 的 \cs{boldsymbol}。
+%    \begin{macrocode}
+\newcommand\bm{\symbf}
+\renewcommand\boldsymbol{\symbf}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% 允许太长的公式断行、分页等。
+%    \begin{macrocode}
+\allowdisplaybreaks[4]
+\renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
+%    \end{macrocode}
+%
+% 公式距前后文的距离由 4 个参数控制，参见 \cs{normalsize} 的定义。
+%
+% \subsubsection{自动引用与定理环境}
+% 自动引用会在引用的编号前，添加对应的标签。
+% 不过由于语言的限制，仅推荐对图、表、式子和定理环境使用自动引用。
+%
+% 根据语言，定义证明环境的格式，并且定义定理环境样式“nwafuplain”。
+%    \begin{macrocode}
+\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
+\renewcommand\figureautorefname\figurename
+\renewcommand\tableautorefname\tablename
+\newcommand\subfigureautorefname\figureautorefname
+\renewenvironment{proof}[1][\proofname]{
+  \pushQED{\qed}%
+  \normalfont
+  \topsep0pt \partopsep0pt % no space before
+  \trivlist
+  \nwafufontparleft
+  \item[\hskip\labelsep\hskip\parindent
+        \nwafu@font@title\selectfont
+    #1\@addpunct{:}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\ifnwafu@lang@cn
+  \renewenvironment{proof}[1][\proofname]{
+    \pushQED{\qed}%
+    \normalfont
+    \topsep0pt \partopsep0pt % no space before
+    \trivlist
+    \nwafufontparleft
+    \item[\hskip\labelsep\hskip\parindent
+          \nwafu@font@title\selectfont
+      #1\@addpunct{:}]\ignorespaces
+  }{%
+    \popQED\endtrivlist\@endpefalse
+  }
+  \newtheoremstyle{nwafuplain}
+    {0pt}{0pt}
+    {\nwafufontparleft}{\parindent}
+    {}{：}
+    {0em}
+    {\nwafu@font@title\selectfont\thmname{#1}\thmnumber{#2}\thmnote{（#3）}}
+\else\ifnwafu@lang@en
+  \renewenvironment{proof}[1][\proofname]{
+    \pushQED{\qed}%
+    \normalfont
+    \topsep0pt \partopsep0pt % no space before
+    \trivlist
+    \nwafufontparleft
+    \item[\hskip\labelsep\hskip\parindent
+          \itshape\selectfont
+      #1\@addpunct{:}]\ignorespaces
+  }{%
+    \popQED\endtrivlist\@endpefalse
+  }
+  \newtheoremstyle{nwafuplain}
+    {0pt}{0pt}
+    {\nwafufontparleft\itshape\selectfont}{\parindent}
+    {}{:~}
+    {0em}
+    {\nwafu@font@title\selectfont\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}
+\else
+  \popQED\endtrivlist\@endpefalse  
+  \newtheoremstyle{nwafuplain}
+    {0pt}{0pt}
+    {\nwafufontparleft}{\parindent}
+    {}{: }
+    {0em}
+    {\nwafu@font@title\selectfont\thmname{#1}\thmnumber{#2}\thmnote{(#3)}}
+\fi\fi
+%    \end{macrocode}
+% \begin{macro}{\nwafutheoremg}
+% \oarg{refname}\marg{name}\marg{label}
+% 定义一个定理环境，计数器不会重置。
+%    \begin{macrocode}
+\newcommand\nwafutheoremg[3][\@empty]{
+  \newtheorem{#2}{#3}
+  \expandafter\gdef\csname #2autorefname\endcsname{% 空格消除
+    \expandafter\ifstrempty\expandafter{#1}{#3}{#1}}
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\nwafutheoremchap}
+% \oarg{refname}\marg{name}\marg{label}
+% 定义一个定理环境，每个章节单独计数。
+%    \begin{macrocode}
+\newcommand\nwafutheoremchap[3][\@empty]{
+  \newtheorem{#2}{#3}[chapter]
+  \expandafter\gdef\csname #2autorefname\endcsname{% 空格消除
+    \expandafter\ifstrempty\expandafter{#1}{#3}{#1}}
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\nwafutheoremchapu}
+% \oarg{refname}\marg{name}\marg{label}
+% 定义一个定理环境，与其他同方法声明的环境变量共享一个计数器。
+%    \begin{macrocode}
+\newcommand\nwafutheoremchapu[3][\@empty]{
+  \newaliascnt{#2}{dummytheorem}
+  \newtheorem{#2}[#2]{#3}
+  \aliascntresetthe{#2}
+  \expandafter\gdef\csname #2autorefname\endcsname{% 空格消除
+    \expandafter\ifstrempty\expandafter{#1}{#3}{#1}}
+}
+%    \end{macrocode}
+% \end{macro}
+% 定义一个随着 chapter 重置的 dummy 定理环境，供 \cs{nwafutheoremchapu} 内部使用。
+%    \begin{macrocode}
+\newtheorem{dummytheorem}{Dummy}[chapter]
+%    \end{macrocode}
+% \begin{macro}{\nwafufontcaption}
+% 题注字体，如果需要在 \cs{caption} 以外的地方写题注（如 \env{longtable} 续页后），
+% 可以使用这个宏来设置正确的字体。（本科特供）
+%    \begin{macrocode}
+\newcommand\nwafufontcaption{
+  \ifnwafu@bachelor
+    \nwafu@font@title\zihao{5}
+  \else
+    \normalfont
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsubsection{浮动对象以及表格}
+% \label{sec:float}
+% 设置浮动对象和文字之间的距离
+%    \begin{macrocode}
+\setlength{\floatsep}{12bp \@plus4pt \@minus1pt}
+\setlength{\intextsep}{12bp \@plus4pt \@minus2pt}
+\setlength{\textfloatsep}{12bp \@plus4pt \@minus2pt}
+\setlength{\@fptop}{0bp \@plus1.0fil}
+\setlength{\@fpsep}{12bp \@plus2.0fil}
+\setlength{\@fpbot}{0bp \@plus1.0fil}
+%    \end{macrocode}
+%
+% 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的文本页面，
+% 也可以防止在很大空白的浮动页上放置很小的图形。
+%    \begin{macrocode}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.60}
+%    \end{macrocode}
+%
+% 题注格式：编号与题注间隔，最后一行居中，以及字体。
+% 定制浮动图形和表格标题样式
+% \begin{itemize}
+%   \item 图表标题字体为 11pt， 这里写作大五号
+%   \item 去掉图表号后面的冒号。图序与图名文字之间空一个汉字符宽度。
+%   \item 图：caption 在下，段前空 6 磅，段后空 12 磅
+%   \item 表：caption 在上，段前空 12 磅，段后空 6 磅
+%   \item 表：本科附录图表编号用-不用.（如图A-1，表A-2）
+% \end{itemize}
+%    \begin{macrocode}
+\ifnwafu@bachelor
+  \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
+  \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
+\fi
+\let\old@tabular\@tabular
+\def\nwafu@tabular{\zihao{5}\old@tabular}
+\DeclareCaptionLabelFormat{nwafu}{{\zihao{5}\nwafufontcaption #1~#2}}
+\DeclareCaptionLabelSeparator{nwafu}{\hspace{1em}}
+\DeclareCaptionFont{nwafu}{\nwafufontcaption}
+\captionsetup{labelformat=nwafu,labelsep=nwafu,font=nwafu,skip=12bp}
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
+\captionsetup[sub]{font=nwafu}
+\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}  
+\captionsetup{justification=centerlast}
+%\captionsetup[figure]{aboveskip=10pt}
+%\captionsetup[figure]{belowskip=0pt}
+%\captionsetup[table]{aboveskip=0pt}
+%\captionsetup[table]{belowskip=10pt}
+%\captionsetup[subfigure]{font=nwafu}
+%\captionsetup[subtable]{font=nwafu}
+%\renewcommand{\thesubfigure}{(\alph{subfigure})}
+%\renewcommand{\thesubtable}{(\alph{subtable})}
+% \renewcommand{\p@subfigure}{:}
+%    \end{macrocode}
+%
+% 表格，按模板设置三线表线条粗细，以及本科表格字体。
+%    \begin{macrocode}
+\setlength\heavyrulewidth{0.5bp}
+\setlength\lightrulewidth{0.5bp}
+\setlength\cmidrulewidth{0.5bp}
+\ifnwafu@bachelor
+  \DeclareFloatFont{bachelor}{\linespread{1.3}\fontsize{10.5bp}{15.6bp}\selectfont}
+  \floatsetup[table]{font=bachelor}
+\fi
+%    \end{macrocode}
+% \subsubsection{列表环境}
+% 使用enumitem宏包配制列表环境，紧凑间距。
+%    \begin{macrocode}
+\setlist{nosep}
+%    \end{macrocode}
+% 列表和段落头对齐
+%    \begin{macrocode}
+\setlist*{leftmargin=*}
+\setlist[1]{labelindent=\dimexpr\parindent+\nwafuparleft\relax} %% Only the level 1
+%    \end{macrocode}
+%
+% \subsection{实用命令}
+% 本节介绍模板中用到的 utilities（功能不强大，但顾名思义很实在）。
+%
+% \begin{macro}{\nwafu@dateCn}
+% 当前中文日期
+%    \begin{macrocode}
+\newcommand{\nwafu@dateCn}{
+  \the\year 年\the\month 月
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\nwafu@dateEn}
+% 当前英文日期
+%    \begin{macrocode}
+\newcommand{\nwafu@dateEn}{
+  \ifcase\the\month
+  \or January%
+  \or February%
+  \or March%
+  \or April%
+  \or May%
+  \or June%
+  \or July%
+  \or August%
+  \or September%
+  \or October%
+  \or November%
+  \or December%
+  \fi, \the\year
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\cleardoublepage}
+% 双面换页（疑似 \CTeX{} feature 修复）。
+% 为了产生真正的空白页，需要手动结束当前页，设置页眉页脚，然后再双面换页。
+%    \begin{macrocode}
+\ifnwafu@blankleft
+  \let\nwafu@cleardoublepage\cleardoublepage
+  \renewcommand{\cleardoublepage}{
+    \clearpage
+    {
+    \pagestyle{style@empty}
+    \nwafu@cleardoublepage
+    }
+  }
+\fi
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsubsection*{绘制关键词}
+% 摘要页的关键词部分，如果关键词换行了，需要与第一个关键词左对齐。
+%    \begin{macrocode}
+\newbox\nwafu@kw
+\newcommand{\nwafu@put@kw}[2]{%
+  \begingroup
+  \setbox\nwafu@kw=\hbox{#1}
+  \noindent\hangindent\wd\nwafu@kw\hangafter1
+  \box\nwafu@kw#2\par
+  \endgroup}
+%    \end{macrocode}
+%
+% \subsubsection*{特殊页面}
+% 按照文档的语言、类别，调用实际的宏。
+%
+% 为了方便辨识，所有具体实现特殊页面绘制的宏的名字都很长。
+% 在这里定义了几个封装好的宏给论文作者使用，它们会根据论文的选项，
+% 绘制对应版本的页面。
+% \begin{macro}{\makecover}
+% 绘制封面
+%    \begin{macrocode}
+\def\makecover{
+  \ifnwafu@lang@cn
+    \hypersetup{
+      pdftitle = {\nwafu@value@title},
+      pdfauthor = {\nwafu@value@author},
+      pdfkeywords = {\nwafu@keywords@pdf}
+    }
+  \else\ifnwafu@lang@en
+    \hypersetup{
+      pdftitle = {\nwafu@valueEn@title},
+      pdfauthor = {\nwafu@valueEn@author},
+      pdfkeywords = {\nwafu@keywordsEn@pdf}
+    }
+  \fi\fi
+  \pagestyle{style@empty}
+  \pagenumbering{Alph}
+  \cleardoublepage
+
+  \ifnwafu@bachelor
+    \nwafu@make@cover@bachelor
+  \else
+    \nwafu@make@cover@master@cn
+    \nwafu@make@cover@master@en
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\makedeclare}
+% 绘制承诺书
+%    \begin{macrocode}
+\newcommand\makedeclare{
+  \ifnwafu@bachelor
+    \nwafu@make@declare@bachelor
+  \else
+    \nwafu@make@declare@master
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\makeabstract}
+% 绘制摘要
+%    \begin{macrocode}
+\newcommand\makeabstract{
+  %\pagestyle{style@empty}
+  \cleardoublepage
+
+  \ifnwafu@bachelor
+    \nwafu@make@abstract@bachelor@cn
+    \nwafu@make@abstract@bachelor@en    
+  \else
+    \nwafu@make@abstract@master@cn
+    \nwafu@make@abstract@master@en
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\nwafutableofcontents}
+% 绘制正文目录，本科生“目录”字号（三号）与其他大标题（chapter，小三）不同。
+%    \begin{macrocode}
+\newcommand\nwafutableofcontents{
+  \cleardoublepage
+  \chapter*{
+    \ifnwafu@bachelor
+      \linespread{1.5}\fontsize{16bp}{15.6bp}\selectfont
+    \fi
+    \contentsname}
+  \@starttoc{toc}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\nwafulistoffigurestables}
+% 绘制图表清单
+%    \begin{macrocode}
+\newcommand\nwafulistoffigurestables{
+  \clearpage
+  \chapter*{\listfiguretablename}
+  \@starttoc{lof}
+  \bigskip
+  \@starttoc{lot}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{绘制特殊页面}
+% 本节定义绘制封面、承诺书和摘要页的代码。
+%
+% \subsubsection{本科封面}
+% \begin{macro}{\nwafu@make@cover@bachelor}
+% 本科封面布局的难点，在于正中间的题目，和下方的论文信息，
+% 虽然这两部分都用表格来布局，但实现方法是完全不同的。
+%
+% 题目部分是一行两列的表格，左边的“题目”二字水平居中+垂直居中；
+% 右侧是论文的题目，如果不是中文论文的话，还要写上原文的题目。
+% 原本想用 \pkg{tabu} 来排版的，不过它没法指定列宽，并且与新版的 \pkg{array} 不兼容，
+% 导致没法垂直居中，即使是在网上找到的例子 \footnote{\url{https://tex.stackexchange.com/a/26214}}，
+% 编译出来的结果与网上给出的截图不一样，所以只好改用 \pkg{array} 的 \env{tabular}。
+% 虽然 \env{tabular} 默认垂直居中，但水平居中并不能直接套用 \env{center} 环境，或者用 \cs{centering}，
+% 它们都要在最后加上 \cs{par}，结果会在表格里增加一个空行，导致左侧的“标题”二字与右侧不垂直居中。
+% 最后仍然需要定义新的列类型。
+% 原本打算完全照用 Word 里的单元格宽度的，但它超过了页边距，所以稍作裁剪。
+%
+% 在\LaTeX{}中默认的中文字体族是rm，其正常字体是宋体，粗体是黑体，斜体是楷体。这样的话排版出封面就与word排出的封面有明显的不同。
+% 这里是知乎上对于这个问题的处理方法：<https://www.zhihu.com/question/58456658> 。
+% 个人认为\LaTeX{}模版没必要完全采用word的排版要求，制定一套针对LaTeX的排版标准是最好的。
+%
+% 下方的论文信息就相对简单一些，用 \env{tabular} 环境绘制了 6~行2~列 的表格，右侧的格子下面划线。
+% 为了设置最小列宽，这里用了一点 hacking 的方法，给“班级”的值套上了固定宽度的 \cs{makebox}。
+% \cs{makebox}不会扩展宽度，但“班级”的值基本都是7~位数字，所以应该没问题吧。
+% 如果“指导教师”很长，\env{tabular} 会加宽表格的列宽，整个表格仍然保持居中。
+%
+% 剩余的部分只需要按照 Word 模板设置字体字号，然后多余的垂直空间按比例填上空格。
+% 如果“题目”过长导致换行，模板会均匀地从多余的空间里抽出等比例的空间给标题用，
+% 不用像 Word 模板那样手工调整，也不用担心底部的日期跑到后一页去。
+%
+%    \begin{macrocode}
+\newcommand\nwafu@make@cover@bachelor{
+  \cleardoublepage
+  \newgeometry{top=1.0in, bottom=1.0in, left=1.25in, right=1.25in}
+
+  \begin{flushright}
+    \linespread{1.25}\sihao\bfseries%\sffamily\heiti\fontsize{14bp}{16.8bp}\selectfont
+    \nwafu@label@stuno ： \underline{\nwafu@value@studentid}\hspace*{1.3cm}
+    \vspace{\stretch{2}}
+  \end{flushright}
+
+  \begin{center}
+    \includegraphics[width=0.7\linewidth]{logo/nwafubilogo.png}
+    \vspace{\stretch{1.5}}
+
+    \linespread{1}\heiti\yihao%\fontsize{35bp}{35bp}\selectfont%\zihaoxiaochu
+    {\makebox[0.8\linewidth][s]{\nwafu@value@gradyear 届本科生\nwafu@worktypecn}} 
+    %{\nwafu@value@gradyear 届本科生\nwafu@worktypecn}
+    \vspace{\stretch{1.5}}
+  \end{center}
+
+  \begin{center}
+    \linespread{1.212}\heiti\erhao%\fontsize{22bp}{26.4bp}\selectfont%\zihaoer%
+    \begin{tabular}{C{4em}C{4.0in}}
+    {\nwafu@label@title ：} &
+    \ifnwafu@lang@en
+      {\expandafter\uline\expandafter{\nwafu@valueEn@title} \par}
+    \fi
+    {\expandafter\uline\expandafter{\nwafu@value@title}}
+    \end{tabular}
+    \vspace{\stretch{5}}
+
+    \linespread{1}\sffamily\songti\fontsize{15.75bp}{37.6bp}\selectfont%\bfseries
+    \begin{tabular} {cc}%      
+      \makebox[\widthof{\nwafu@label@coadviser}][s]{\nwafu@label@college} ： & \nwafu@value@college \\ \cline{2-2}%
+      \makebox[\widthof{\nwafu@label@coadviser}][s]{\nwafu@label@major \nwafu@label@classid} ：& \nwafu@value@major \nwafu@value@classid 班 \\ \cline{2-2}       
+      \makebox[\widthof{\nwafu@label@coadviser}][s]{\nwafu@label@author} ：& \nwafu@value@author \\ \cline{2-2}
+      \makebox[\widthof{\nwafu@label@coadviser}][s]{\nwafu@label@adviser} ：& \nwafu@value@advisers \\ \cline{2-2}
+      \makebox[\widthof{\nwafu@label@coadviser}][s]{\nwafu@label@coadviser} ：& \nwafu@value@coadvisers \\ \cline{2-2}
+      \makebox[\widthof{\nwafu@label@coadviser}][s]{\nwafu@label@applydate} ：& \ifdefempty{\nwafu@value@applydate}{\nwafu@dateCn}{\nwafu@value@applydate} \\ \cline{2-2}
+    \end{tabular}
+    %\begin{tabular} {cc}
+    %  \nwafu@label@college ： & \nwafu@value@college \\ \cline{2-2} 
+    %  \nwafu@label@major\hfill  \nwafu@label@classid ： & \nwafu@value@major \nwafu@value@classid 班 \\ \cline{2-2}       
+    %  \nwafu@label@author ： & \nwafu@value@author \\ \cline{2-2}
+    %  \nwafu@label@adviser ： & \nwafu@value@advisers \\ \cline{2-2}
+    %  \nwafu@label@coadviser ： & \nwafu@value@coadvisers \\ \cline{2-2}
+    %  \nwafu@label@applydate ： & \ifdefempty{\nwafu@value@applydate}{\nwafu@dateCn}{\nwafu@value@applydate} \\ \cline{2-2}
+    %\end{tabular}    
+  \end{center}
+  \restoregeometry
+}
+%    \end{macrocode}
+% \end{macro}
+% \subsubsection{本科承诺书}
+% \begin{macro}{\nwafu@make@declare@bachelor}
+%
+% 由于本页面会出现在所有语言的论文中，所以要单独设置中文的段落缩进。
+%    \begin{macrocode}
+\newcommand\nwafu@make@declare@bachelor{
+  \cleardoublepage
+  \newgeometry{top=1.0in, bottom=1.0in, left=1.25in, right=1.25in}
+
+  \begin{center}
+    \linespread{1.5}\bfseries\sffamily\songti\sanhao%\fontsize{18bp}{31.2bp}\selectfont
+    本科生\nwafu@worktypecn{}的独创性声明
+  \end{center}
+
+  \begingroup
+    \linespread{1.5}\kaishu\xiaosi%\fontsize{14bp}{31.2bp}\selectfont
+    \setlength\parindent{2\ccwd}\indent
+
+    本人声明：所呈交的\nwafu@worktypecn{}是我个人在导师指导下独立进行的研究工作及取得的研究结果。
+    尽我所知，除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写过的研究结果，
+    也不包含其他人和自己本人已获得\nwafu@label@nwafu{}或其它教育机构的学位或证书而使用过的材料。
+    与我一同工作的同事对本研究所做的任何贡献均已在论文的致谢中作了明确的说明并表示了谢意。
+    如违反此声明，一切后果与法律责任均由本人承担。
+
+    \vspace{15.6bp}
+
+    \begin{flushleft}
+      \setlength{\tabcolsep}{0bp}
+      \begin{tabular}{rccr}
+      本\hfill{}科\hfill{}生\hfill{}签\hfill{}名： & \hspace{7.5em} & 时间： &  \hspace{4em} 年 \hspace{1.5em} 月 \hspace{1.5em} 日 \\
+      \end{tabular}
+    \end{flushleft}
+  \endgroup
+
+  \vspace{26.2bp}
+
+  \begin{center}
+    \linespread{1.5}\bfseries\sffamily\songti\sanhao%\fontsize{18bp}{31.2bp}\selectfont
+    关于本科生\nwafu@worktypecn{}知识产权的说明
+  \end{center}
+
+  \begingroup
+    \linespread{1.5}\kaishu\xiaosi%\fontsize{14bp}{31.2bp}\selectfont
+    \setlength\parindent{2\ccwd}\indent
+
+    本\nwafu@worktypecn{}的知识产权归属\nwafu@label@nwafu{}。本人同意\nwafu@label@nwafu{}保存
+    或向国家有关部门或机构送交论文的纸质版和电子版，允许论文被查阅和借阅。
+    
+    本人保证，在毕业离开\nwafu@label@nwafu{}后，发表或者使用本\nwafu@worktypecn{}及其相关的工作成果时，
+    将以\nwafu@label@nwafu{}为第一署名单位，否则，愿意按《中华人民共和国著作权法》等有关规定接受处理并承担法律责任。
+
+    任何收存和保管本论文各种版本的其他单位和个人(包括作者本人)未经本论文作者的导师同意，
+    不得有对本论文进行复制、修改、发行、出租、改编等侵犯著作权的行为，
+    否则，按违背《中华人民共和国著作权法》等有关规定处理并追究法律责任。
+
+    \vspace{15.6bp}
+
+    \begin{flushleft}
+      \setlength{\tabcolsep}{0bp}
+      \begin{tabular}{rccr}
+        本\hfill{}科\hfill{}生\hfill{}签\hfill{}名： & \hspace{7.5em} & 时间： &  \hspace{4em} 年 \hspace{1.5em} 月 \hspace{1.5em} 日 \\[2ex]
+        指\hfill{}导\hfill{}教\hfill{}师\hfill{}签\hfill{}名： & \hspace{7.5em} & 时间： &  \hspace{4em} 年 \hspace{1.5em} 月 \hspace{1.5em} 日
+      \end{tabular}
+    \end{flushleft}
+  \endgroup
+
+  \restoregeometry
+}
+%    \end{macrocode}
+% \end{macro}
+% \subsubsection{本科摘要}
+% 本科的摘要页顶部需要有论文的标题，所以不能用\cs{chapter*}，因为它会自动换页。
+% \begin{macro}{\nwafu@make@abstract@bachelor@cn}
+% 本科的中文摘要页。
+%    \begin{macrocode}
+\newcommand\nwafu@make@abstract@bachelor@cn{
+  \ifnwafu@abstractopenright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  
+  %\pagestyle{empty}
+
+  \begin{center}
+    \vspace*{-4.3pt}
+    \sffamily\heiti\zihao{3}    
+    \nwafu@value@title
+  \end{center}
+
+  %\begin{center}
+  %  \sffamily\heiti\zihao{-3}\vspace{1em}
+  %  \nwafu@label@abstract
+  %\end{center}
+
+  \begingroup
+    \setlength\parindent{2\ccwd}\songti\indent
+    {\heiti\zihao{-4} \makebox[\widthof{\nwafu@label@keywords}][s]{\nwafu@label@abstract}：}
+    {\songti\zihao{5}\nwafu@abstract}
+  \endgroup
+
+  \vspace{2ex}
+
+  \begingroup
+    \setlength\parindent{2\ccwd}\songti\indent
+    \nwafu@put@kw{\heiti\zihao{-4}\nwafu@label@keywords{}：}{\songti\zihao{5}\nwafu@keywords}  
+  \endgroup
+  
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\nwafu@make@abstract@bachelor@en}
+% 本科的英文摘要页。
+%    \begin{macrocode}
+\newcommand\nwafu@make@abstract@bachelor@en{
+  \ifnwafu@abstractopenright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+
+  \begin{center}
+    \vspace*{-4.3pt}
+    \sffamily\heiti\zihao{3}
+    %\phantomsection
+    %\addcontentsline{toc}{chapter}{\nwafu@labelEn@abstract}
+    \textsc{\nwafu@valueEn@title}
+  \end{center}
+
+  %\begin{center}
+  %  \sffamily\heiti\zihao{-3}\vspace{18pt}    
+  %  \nwafu@labelEn@abstract
+  %  \vspace{10pt}
+  %\end{center}
+
+  \begingroup
+    \setlength\parindent{2\ccwd}\rmfamily\indent
+    {\bfseries \zihao{-4} \nwafu@labelEn@abstract: }
+    {\zihao{5}\nwafu@abstractEn}    
+  \endgroup
+
+  \vspace{2ex}
+
+  \begingroup
+    \setlength\parindent{2\ccwd}\rmfamily\indent
+    \nwafu@put@kw{\nwafu@textbf{\zihao{-4}\nwafu@labelEn@keywords: } }{\nwafu@keywordsEn}
+  \endgroup  
+}
+%    \end{macrocode}
+% \end{macro}
+% \subsubsection{硕/博士封面}
+% \begin{macro}{\nwafu@make@cover@master@cn}
+% 硕/博士中文封面，难点比本科的封面少一个，只要把论文信息排好就行。
+% \sout{由于用了 \env{tabu}，导师名字再长、要写两个导师都没问题。}
+%
+% 还是没有想象中简单，\pkg{tabu} 虽然很诱人，但实在不可靠，
+% 所以改用 \env{tabular} 的实现，仍然可以写多个导师的名字，
+% 但是表格宽度是固定的，不会自动调整，
+% 所有数字均是精确计算得出。
+% 整个 \env{tabular} 将占满整个页宽（$\SI{8.27}{inch} - \SI{30}{\mm} - \SI{28}{\mm}$），
+% 标签左侧空白宽度为 1\sfrac{1}{8}~inch，标签本身宽度为 $5\times \SI{16}{pt}$，
+% 右侧内容起始位置为 2\sfrac{7}{8}~inch，做一下单位换算和加减法就得到下面的代码。
+%
+% 另一个问题的是简启体的校名。首先，百度上确实有一个字体的全称叫“迷你简启体”，
+% 但稍再搜索下的话，不难发现这“迷你简启体”是“广捷居”对“方正启体简体”精简衍生版本。
+% 这里不打算讨论版权问题，只从使用的角度出发，如果所有用户都要安装这一字体
+% 并在 \LaTeX 中使用，无疑会加大使用难度；本模板将所需的字形存放在 |pdf| 文件中，
+% 当作普通的图片插入封面中，能大幅降低使用难度，避免修改系统设置，并且尽可能规避版权问题。
+%
+%    \begin{macrocode}
+\newcommand\nwafu@make@cover@master@cn{
+  \cleardoublepage
+
+  \begin{multicols}{2}
+    \linespread{1}\songti\fontsize{10.5bp}{15.6bp}\selectfont
+    \begin{flushleft}
+      中图分类号：\nwafu@value@libraryclassid \par
+      学科分类号：\nwafu@value@subjectclassid
+    \end{flushleft}
+    \columnbreak
+    \begin{flushright}
+      论文编号：\nwafu@value@thesisid
+    \end{flushright}
+  \end{multicols}
+  \vspace{\stretch{2}}
+
+  \begin{center}
+    \linespread{1}\songti\fontsize{42bp}{62.4bp}\selectfont\nwafu@worktypecn
+    \vspace{\stretch{2}}
+
+    \linespread{1}\sffamily\heiti\fontsize{26bp}{46.8bp}\selectfont\nwafu@value@title
+  \end{center}
+  \vspace{\stretch{3}}
+
+  \begin{center}
+  \linespread{1}\rmfamily\songti\fontsize{16bp}{31.2bp}\selectfont
+  \renewcommand\linebreak{\par}
+  \begin{tabular} {@{\hskip 1.125in}c@{\hskip .6389in}p{3.1115in}}
+    \nwafu@label@researchername & \nwafu@value@author \\
+\ifnwafu@techmaster
+    \nwafu@label@professionaltype & \nwafu@value@majorsubject \\
+    \nwafu@label@professionalfield & \nwafu@value@researchfield \\
+\else
+    \nwafu@label@majorsubject & \nwafu@value@majorsubject \\
+    \nwafu@label@researchfield & \nwafu@value@researchfield \\
+\fi
+    \nwafu@label@adviser & \nwafu@value@advisers \\
+  \end{tabular}
+  \end{center}
+  \vspace{\stretch{3}}
+
+  \begin{center}
+    \linespread{1}
+    \includegraphics{nwafu-jianqi.pdf}
+
+    \kaishu\fontsize{18bp}{31.2bp}\selectfont
+    \nwafu@label@graduateschool\quad \nwafu@value@college
+
+    \kaishu\fontsize{16bp}{31.2bp}\selectfont
+    \ifdefempty{\nwafu@value@applydate}{\nwafu@dateCn}{\nwafu@value@applydate}
+
+  \end{center}
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\nwafu@make@cover@master@en}
+% 硕/博士英文封面。值得一提的是，正是学校 Word 模板的这一页，
+% 导致了本模板 |v2.1| 放弃完美复刻 Word 模板的方针。
+%
+% 原因在于本页标题下面的三段字，加起来一共11~行，原 Word 模板换了5~次格式。
+% 用空行来增加行间距、对齐到文档网络随意改，
+% 笔者实在解读不出原模板作者的意图，以及ta预期的格式。
+% 这种毫无逻辑的格式转变，让笔者觉得原模板作者根本不会在意数~pt 的误差，
+% 刻意去复现原模板无逻辑的格式变化是没有意义的。
+% 因此笔者按自己对排版的理解，实现了原模板的主体格式。
+%    \begin{macrocode}
+\newcommand\nwafu@make@cover@master@en{
+  \cleardoublepage
+
+  \begin{center}
+    \linespread{1.5}\fontsize{14bp}{14bp}\rmfamily\selectfont
+    \nwafu@labelEn@nwafu \par
+    \nwafu@labelEn@graduateschool \par
+    \nwafu@valueEn@college \vspace{\stretch{1}}
+
+    \linespread{1}\fontsize{22bp}{31.2bp}\rmfamily\selectfont
+    \nwafu@textbf{\nwafu@valueEn@title}
+    \par \vspace{\stretch{1}}
+
+    \linespread{1.75}\fontsize{14bp}{16.8bp}\rmfamily\selectfont
+    A Thesis in \\
+    \nwafu@valueEn@majorsubject \\
+    by \\
+    \nwafu@valueEn@author \\
+    Advised by \\
+    \nwafu@valueEn@advisers \par \bigskip
+
+    Submitted in Partial Fulfillment \\
+    of the Requirements \\
+    for the Degree of \\
+    \nwafu@valueEn@degreefull \par\bigskip
+
+    \ifdefempty{\nwafu@valueEn@applydate}{\nwafu@dateEn}{\nwafu@valueEn@applydate}
+  \end{center}
+}
+%    \end{macrocode}
+% \end{macro}
+% \subsubsection{硕/博士承诺书}
+% \begin{macro}{\nwafu@make@declare@master}
+% 与本科类似，需要保证在非中文环境下，保持本页中文排版格式。
+%    \begin{macrocode}
+\newcommand\nwafu@make@declare@master{
+  \cleardoublepage
+
+  \begin{center}
+  \linespread{1.0}\songti\fontsize{22bp}{62.4bp}\selectfont
+  \vspace*{25.5bp} \vspace{-\parskip}\vspace{-\baselineskip}
+  承诺书 \par
+  \end{center}
+
+  \begingroup
+  \vspace*{31.4bp} \vspace{-\parskip}\vspace{-\baselineskip}
+  \linespread{1.0}\rmfamily\songti\fontsize{16bp}{30bp}\selectfont
+  \setlength\parindent{2\ccwd}
+
+  本人声明所呈交的\nwafu@worktypecn 是本人在导师指导下进行的研究工作及取得的研究成果。
+  除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写过的研究成果，
+  也不包含为获得\nwafu@label@nwafu 或其他教育机构的学位或证书而使用过的材料。
+
+  本人授权\nwafu@label@nwafu 可以将学位论文的全部或部分内容编入有关数据库进行检索，
+  可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。
+
+  （保密的学位论文在解密后适用本承诺书）
+
+  \endgroup
+
+  \vfill
+  \begin{flushright}
+  \linespread{1.0}\songti\fontsize{14bp}{25bp}\selectfont
+  \makebox[5\ccwd][c]{作者签名：} \underline{\hspace{7em}} \par
+  \makebox[5\ccwd][c]{日 \hfill 期：} \underline{\hspace{7em}} \par
+  \end{flushright}
+  \vfill
+}
+%    \end{macrocode}
+% \end{macro}
+% \subsubsection{硕/博士摘要页}
+% 与本科稍微不同的是，为了避免摘要页因内容过多，导致只有关键词被溢出到下一页，
+% 这里在垂直空格上加了一些胶水。对胶水不熟悉的读者可以去读一下 \textit{The \TeX book} 的第12章。
+% \begin{macro}{\nwafu@make@abstract@master@cn}
+% 硕/博士中文摘要页
+%    \begin{macrocode}
+\newcommand\nwafu@make@abstract@master@cn{
+  \ifnwafu@abstractopenright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+
+  \chapter*{\heiti\nwafu@label@abstract}
+
+  \begingroup
+    \setlength\parindent{2\ccwd}
+    \rmfamily\songti\indent
+
+    \nwafu@abstract
+  \endgroup
+  \vskip 2\baselineskip minus 1.5\baselineskip
+
+  \nwafu@put@kw{\nwafu@textbf{\songti\nwafu@label@keywords}}{\songti\nwafu@keywords}
+}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{\nwafu@make@abstract@master@en}
+% 硕/博士英文摘要页
+%    \begin{macrocode}
+\newcommand\nwafu@make@abstract@master@en{
+  \ifnwafu@abstractopenright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+
+  \chapter*{\textrm{\nwafu@textbf{\nwafu@labelEn@ABSTRACT}}}
+
+  \begingroup
+    \setlength\parindent{1em}
+    \nwafu@abstractEn
+  \endgroup
+  \vskip 2\baselineskip minus 1.5\baselineskip
+
+  \nwafu@put@kw{\nwafu@textbf{\nwafu@labelEn@keywords}}{\nwafu@keywordsEn}
+}
+%    \end{macrocode}
+% \end{macro}
+%    \begin{macrocode}
+%</cls>
+%    \end{macrocode}
+
+% \iffalse
+% 以下为文档的样式，内容不会出现在文档中
+%    \begin{macrocode}
+%
+%<*dtx-style>
+\ProvidesPackage{dtx-style}
+\RequirePackage[bottom,perpage,hang,]{footmisc}
+\RequirePackage{hypdoc}
+\PassOptionsToPackage{no-math}{fontspec}
+\RequirePackage[UTF8,scheme=chinese]{ctex}
+\RequirePackage{newpxtext}
+\RequirePackage{newpxmath}
+\RequirePackage[
+top=2.5cm, bottom=2.5cm,
+left=4cm, right=2cm,
+headsep=3mm]{geometry}
+\RequirePackage{array,longtable,booktabs}
+\RequirePackage{float}
+\RequirePackage{listings}
+\RequirePackage{fancyhdr}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{metalogo}
+\RequirePackage{graphicx}
+\RequirePackage{xspace}
+\RequirePackage{pifont}
+\RequirePackage{siunitx}
+\RequirePackage{xfrac}
+
+\def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@}
+\let\cqu@footnotesize\footnotesize
+\renewcommand{\footnotesize}{\cqu@footnotesize\zihao{-5}}
+\footnotemargin1.5em\relax
+
+\let\cqu@makefnmark\@makefnmark
+\def\cqu@@makefnmark{\mbox{{\normalfont\@thefnmark}}}
+\pretocmd{\@makefntext}{\let\@makefnmark\cqu@@makefnmark}{}{}
+\apptocmd{\@makefntext}{\let\@makefnmark\cqu@makefnmark}{}{}
+
+\colorlet{cqu@macro}{blue!60!black}
+\colorlet{cqu@env}{blue!70!black}
+\colorlet{cqu@option}{purple}
+%\patchcmd{\PrintMacroName}{\MacroFont}{\MacroFont\bfseries\color{cqu@macro}}{}{}
+%\patchcmd{\PrintDescribeMacro}{\MacroFont}{\MacroFont\bfseries\color{cqu@macro}}{}{}
+%\patchcmd{\PrintDescribeEnv}{\MacroFont}{\MacroFont\bfseries\color{cqu@env}}{}{}
+%\patchcmd{\PrintEnvName}{\MacroFont}{\MacroFont\bfseries\color{cqu@env}}{}{}
+
+\def\DescribeOption{%
+    \leavevmode\@bsphack\begingroup\MakePrivateLetters%
+    \Describe@Option}
+\def\Describe@Option#1{\endgroup
+    \marginpar{\raggedleft\PrintDescribeOption{#1}}%
+    \cqu@special@index{option}{#1}\@esphack\ignorespaces}
+\def\PrintDescribeOption#1{\strut \MacroFont\bfseries\sffamily\color{cqu@option} #1\ }
+\def\cqu@special@index#1#2{\@bsphack
+    \begingroup
+    \HD@target
+    \let\HDorg@encapchar\encapchar
+    \edef\encapchar usage{%
+        \HDorg@encapchar hdclindex{\the\c@HD@hypercount}{usage}%
+    }%
+    \index{#2\actualchar{\string\ttfamily\space#2}
+        (#1)\encapchar usage}%
+    \index{#1:\levelchar#2\actualchar
+        {\string\ttfamily\space#2}\encapchar usage}%
+    \endgroup
+    \@esphack}
+
+\lstdefinestyle{lstStyleBase}{%
+    basicstyle=\small\ttfamily,
+    aboveskip=\medskipamount,
+    belowskip=\medskipamount,
+    lineskip=0pt,
+    boxpos=c,
+    showlines=false,
+    extendedchars=true,
+    upquote=true,
+    tabsize=2,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    numbers=none,
+    linewidth=\linewidth,
+    xleftmargin=4pt,
+    xrightmargin=0pt,
+    resetmargins=false,
+    breaklines=true,
+    breakatwhitespace=false,
+    breakindent=0pt,
+    breakautoindent=true,
+    columns=flexible,
+    keepspaces=true,
+    gobble=2,
+    framesep=3pt,
+    rulesep=1pt,
+    framerule=1pt,
+    backgroundcolor=\color{gray!5},
+    stringstyle=\color{green!40!black!100},
+    keywordstyle=\bfseries\color{blue!50!black},
+    commentstyle=\slshape\color{black!60}}
+
+\lstdefinestyle{lstStyleShell}{%
+    style=lstStyleBase,
+    frame=l,
+    rulecolor=\color{blue},
+    language=bash}
+
+\lstdefinestyle{lstStyleLaTeX}{%
+    style=lstStyleBase,
+    frame=l,
+    rulecolor=\color{cyan},
+    language=[LaTeX]TeX}
+
+\lstnewenvironment{latex}{\lstset{style=lstStyleLaTeX}}{}
+\lstnewenvironment{shell}{\lstset{style=lstStyleShell}}{}
+
+\setlist{nosep}
+
+\DeclareDocumentCommand{\option}{m}{\textsf{#1}\xspace}
+\DeclareDocumentCommand{\env}{m}{\texttt{#1}\xspace}
+\DeclareDocumentCommand{\mac}{m}{\texttt{\textbackslash#1}\xspace}
+\DeclareDocumentCommand{\pkg}{s m}{%
+    \texttt{#2}\xspace\IfBooleanF#1{\cqu@special@index{package}{#2}}}
+\DeclareDocumentCommand{\file}{s m}{%
+    \texttt{#2}\xspace\IfBooleanF#1{\cqu@special@index{file}{#2}}}
+\newcommand{\myentry}[1]{%
+    \marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
+%\newcommand{\note}[1]{{%
+%        \color{magenta}{\noindent\bfseries 说明：}\emph{#1}}}
+\newcommand{\note}[2][Note]{{%
+  \color{magenta}{\bfseries #1}\emph{#2}}}
+\DeclareDocumentCommand{\cls}{m}{\texttt{#1}\xspace}
+
+\setlength\IndexMin{100pt}
+%</dtx-style>
+%<*dtx-style|cls>
+\newcommand{\nwafuthesis}{%
+  \makebox{\rmfamily%
+    N\hspace{-0.2ex}\raisebox{-0.5ex}{W}\raisebox{0.5ex}{\hspace{-0.2ex}\textsc{afu}}\hspace{0.3ex}%
+    \textsc{Thesis}}}
+\newcommand{\oldnwafuthesis}{%
+  N\raisebox{0.5ex}{U}\hspace{-0.3ex}AA%
+  \textsc{Thesis}
+}
+\newcommand{\seuthesix}{%
+  \makebox{S\hspace{-0.3ex}\raisebox{-0.5ex}{E}\hspace{-0.3ex}U\hspace{0.1em}%
+  \textsc{Thesix}}
+}
+\newcommand\nuaathesis{\textsc{Nuaa}\-\textsc{Thesis}}
+%</dtx-style|cls>
+%    \end{macrocode}
+% \fi
+%\Finale

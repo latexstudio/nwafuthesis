@@ -1,0 +1,138 @@
+
+\ProvidesPackage{dtx-style}
+\RequirePackage[bottom,perpage,hang,]{footmisc}
+\RequirePackage{hypdoc}
+\PassOptionsToPackage{no-math}{fontspec}
+\RequirePackage[UTF8,scheme=chinese]{ctex}
+\RequirePackage{newpxtext}
+\RequirePackage{newpxmath}
+\RequirePackage[
+top=2.5cm, bottom=2.5cm,
+left=4cm, right=2cm,
+headsep=3mm]{geometry}
+\RequirePackage{array,longtable,booktabs}
+\RequirePackage{float}
+\RequirePackage{listings}
+\RequirePackage{fancyhdr}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{metalogo}
+\RequirePackage{graphicx}
+\RequirePackage{xspace}
+\RequirePackage{pifont}
+\RequirePackage{siunitx}
+\RequirePackage{xfrac}
+
+\def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@}
+\let\cqu@footnotesize\footnotesize
+\renewcommand{\footnotesize}{\cqu@footnotesize\zihao{-5}}
+\footnotemargin1.5em\relax
+
+\let\cqu@makefnmark\@makefnmark
+\def\cqu@@makefnmark{\mbox{{\normalfont\@thefnmark}}}
+\pretocmd{\@makefntext}{\let\@makefnmark\cqu@@makefnmark}{}{}
+\apptocmd{\@makefntext}{\let\@makefnmark\cqu@makefnmark}{}{}
+
+\colorlet{cqu@macro}{blue!60!black}
+\colorlet{cqu@env}{blue!70!black}
+\colorlet{cqu@option}{purple}
+
+\def\DescribeOption{%
+    \leavevmode\@bsphack\begingroup\MakePrivateLetters%
+    \Describe@Option}
+\def\Describe@Option#1{\endgroup
+    \marginpar{\raggedleft\PrintDescribeOption{#1}}%
+    \cqu@special@index{option}{#1}\@esphack\ignorespaces}
+\def\PrintDescribeOption#1{\strut \MacroFont\bfseries\sffamily\color{cqu@option} #1\ }
+\def\cqu@special@index#1#2{\@bsphack
+    \begingroup
+    \HD@target
+    \let\HDorg@encapchar\encapchar
+    \edef\encapchar usage{%
+        \HDorg@encapchar hdclindex{\the\c@HD@hypercount}{usage}%
+    }%
+    \index{#2\actualchar{\string\ttfamily\space#2}
+        (#1)\encapchar usage}%
+    \index{#1:\levelchar#2\actualchar
+        {\string\ttfamily\space#2}\encapchar usage}%
+    \endgroup
+    \@esphack}
+
+\lstdefinestyle{lstStyleBase}{%
+    basicstyle=\small\ttfamily,
+    aboveskip=\medskipamount,
+    belowskip=\medskipamount,
+    lineskip=0pt,
+    boxpos=c,
+    showlines=false,
+    extendedchars=true,
+    upquote=true,
+    tabsize=2,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    numbers=none,
+    linewidth=\linewidth,
+    xleftmargin=4pt,
+    xrightmargin=0pt,
+    resetmargins=false,
+    breaklines=true,
+    breakatwhitespace=false,
+    breakindent=0pt,
+    breakautoindent=true,
+    columns=flexible,
+    keepspaces=true,
+    gobble=2,
+    framesep=3pt,
+    rulesep=1pt,
+    framerule=1pt,
+    backgroundcolor=\color{gray!5},
+    stringstyle=\color{green!40!black!100},
+    keywordstyle=\bfseries\color{blue!50!black},
+    commentstyle=\slshape\color{black!60}}
+
+\lstdefinestyle{lstStyleShell}{%
+    style=lstStyleBase,
+    frame=l,
+    rulecolor=\color{blue},
+    language=bash}
+
+\lstdefinestyle{lstStyleLaTeX}{%
+    style=lstStyleBase,
+    frame=l,
+    rulecolor=\color{cyan},
+    language=[LaTeX]TeX}
+
+\lstnewenvironment{latex}{\lstset{style=lstStyleLaTeX}}{}
+\lstnewenvironment{shell}{\lstset{style=lstStyleShell}}{}
+
+\setlist{nosep}
+
+\DeclareDocumentCommand{\option}{m}{\textsf{#1}\xspace}
+\DeclareDocumentCommand{\env}{m}{\texttt{#1}\xspace}
+\DeclareDocumentCommand{\mac}{m}{\texttt{\textbackslash#1}\xspace}
+\DeclareDocumentCommand{\pkg}{s m}{%
+    \texttt{#2}\xspace\IfBooleanF#1{\cqu@special@index{package}{#2}}}
+\DeclareDocumentCommand{\file}{s m}{%
+    \texttt{#2}\xspace\IfBooleanF#1{\cqu@special@index{file}{#2}}}
+\newcommand{\myentry}[1]{%
+    \marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
+\newcommand{\note}[2][Note]{{%
+  \color{magenta}{\bfseries #1}\emph{#2}}}
+\DeclareDocumentCommand{\cls}{m}{\texttt{#1}\xspace}
+
+\setlength\IndexMin{100pt}
+\newcommand{\nwafuthesis}{%
+  \makebox{\rmfamily%
+    N\hspace{-0.2ex}\raisebox{-0.5ex}{W}\raisebox{0.5ex}{\hspace{-0.2ex}\textsc{afu}}\hspace{0.3ex}%
+    \textsc{Thesis}}}
+\newcommand{\oldnwafuthesis}{%
+  N\raisebox{0.5ex}{U}\hspace{-0.3ex}AA%
+  \textsc{Thesis}
+}
+\newcommand{\seuthesix}{%
+  \makebox{S\hspace{-0.3ex}\raisebox{-0.5ex}{E}\hspace{-0.3ex}U\hspace{0.1em}%
+  \textsc{Thesix}}
+}
+\newcommand\nuaathesis{\textsc{Nuaa}\-\textsc{Thesis}}
