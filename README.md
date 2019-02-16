@@ -10,7 +10,7 @@
 ![](./screenshot/output03.png)
 
 
-2. 更多样例请参考"./demo_chs/eg-bachelor-1.pdf(节标题缩进)"和"./demo_chs/eg-bachelor-2.pdf(节标题不缩进)"
+2. 更多样例请参考"./demo_chs/eg-bachelor-1.pdf(节标题缩进)"、"./demo_chs/eg-bachelor-2.pdf(节标题不缩进)"、"./demo_chs/eg-bachelor-2.pdf(参考文献列表不首行缩进)"。
 
 #### 使用说明
 

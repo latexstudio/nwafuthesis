@@ -1047,8 +1047,6 @@
 \setlength{\bibitemsep}{2pt}
 \setlength{\bibnamesep}{0ex}
 \setlength{\bibinitsep}{0ex}
-\setlength{\bibitemindent}{1.5\ccwd} % bibitemindent表示一条文献中第一行相对后面各行的缩进
-\setlength{\bibhang}{0pt} % 作者年制中 bibhang 表示的各行起始位置到页边的距离,顺序编码制中 bibhang+labelnumberwidth 表示各行起始位置到页边的距离
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
