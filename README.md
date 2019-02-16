@@ -3,6 +3,8 @@
 #### 介绍
 西北农林科技大学学位论文LaTeX文档类(模板)，初步计划支持本科、硕士、博士学位论文。
 
+该模板基于南京航空航天大学毕业论文LaTeX模板，通过修改相差内容实现，参见 "http://www.latexstudio.net/archives/51558.html" ，另外，该模板开发过程中的参考文献样式得到了"biblatex-gb7714-2015样式包"作者胡振震的悉心指导。在此，对他们表示衷心的感谢。
+
 1. 排版样例
 ![](./screenshot/output00.png)
 ![](./screenshot/output01.png)
@@ -25,7 +27,7 @@
                  ]{nwafuthesis}
    ```
    引入`nwafuthesis`文档类。
-3. 为确保参考文献样式正确，请务必使用最新版的`gb7714-2015ay.bbx`和`gb7714-2015ay.cbx`样式文件，有关`gb7714-2015ay`样式文件的详情，请参考 "https://github.com/hushidong/biblatex-gb7714-2015" 。
+3. 为确保参考文献样式正确，请务必使用胡振震开发的"biblatex-gb7714-2015样式包"最新版的`gb7714-2015ay.bbx`和`gb7714-2015ay.cbx`样式文件，有关`gb7714-2015ay`样式文件的详情，请参考 "https://github.com/hushidong/biblatex-gb7714-2015" 。
 
 4. 建议使用`TexLive2018`以上的`XeLaTeX`编译`*.tex`文件。
 
