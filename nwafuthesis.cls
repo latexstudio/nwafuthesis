@@ -904,14 +904,39 @@
 \renewbibmacro*{date+extradate}{%
   \iffieldundef{labelyear}{}%
   {\ifboolexpr{%
-      test {\ifentrytype{patent}}
-      or
-      (test {\ifentrytype{newspaper}})%
-    }%
-    {\printtext{\blx@isodate{}{}}}%
-    {\printtext{%
-        \iflabeldateisdate {\printdateextra} {\printlabeldateextra}}}%
+     test {\ifentrytype{patent}}
+     or
+     (test {\ifentrytype{newspaper}} )%
+   }%
+   {\printtext{\blx@isodate{}{}}}%
+   {\printtext{%
+       \iflabeldateisdate
+       {\printdateextra}
+       {\printlabeldateextra}
+    }
+   }%
   }%
+}
+\newbibmacro*{origdate+extradate}{%
+  \printtext{\printorigdate}%
+}
+\renewbibmacro*{bytranslator+others}{%
+  \ifnameundef{translator}
+    {}
+    {%\usebibmacro{bytranslator+othersstrg}
+     %\setunit{\addspace}%
+     \printnames[bytranslator]{translator}%
+     %\clearname{translator}%
+     %从macro*{bytranslator+othersstrg}%中可以看到当地化字符串格式的引用前的代码处理
+     %比如生成cotranslator等用于调用cotranslator所代表的当地化字符串
+     \usebibmacro{bytranslator+othersstrg}%“译”的位置换到下面来，即放到译者后面。
+     %\setunit{\addspace}%
+     \newunit
+    }%
+  \usebibmacro{withothers}%
+  \ifboolexpr{%
+    test {\iffieldundef{origyear}} or test {\ifnameundef{translator}}%%
+  }{}{\printtext{\printdate}}%
 }
 \renewbibmacro*{url+urldate}{%
   % \usebibmacro{url}%%更换url的位置，放到下面
@@ -951,36 +976,129 @@
     }%
   }%
 }
+\renewbibmacro*{name:andothers}{%
+  \ifboolexpr{
+    test {\ifnumequal{\value{listcount}}{\value{liststop}}}
+    and
+    test \ifmorenames
+  }{\ifnumgreater{\value{liststop}}{1}%
+       {\finalandcomma}%
+       {}%biblatex作者要区别单作者加等的情况，这里为符合gbt7714-2015第7.2节的要求加上了逗号。
+\printdelim{andothersdelim}\printdelim{strandothersdelim}%
+}{%当是译者的时候需要特殊处理：从7.2节看等，译前面加逗号，但从示例看等和译同时出现时，译前的逗号没有，比如：
+}}
+
+\DeclareFieldFormat{edition}{%源来自biblatex.DEF
+\testCJKfirst{userd}%
+\iftoggle{ifCJKforgbt}%
+{\ifinteger{#1}%
+{\printtext{\bibstring{serialcn}\zhnumber{#1}\str@edition}}%
+{#1\isdot}}%
+{\ifinteger{#1}%
+{\mkbibordedition{#1}~\bibstring{edition}}%
+{#1\isdot}}}
+
+\renewbibmacro*{author}{%以前的date+extrayear变为date+extradate，所以对3.8以上版本重定义一下author
+  \ifboolexpr{
+    test \ifuseauthor
+    and
+    not test {\ifnameundef{author}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {%\bibnamedash %去掉相同作者用横线代替的处理
+       \printnames{author}\setunit{\printdelim{nameyeardelim}}%把标点也带上
+       }
+       {\usebibmacro{bbx:savehash}%
+        \printnames{author}%
+        \iffieldundef{authortype}
+          {\setunit{\printdelim{nameyeardelim}}}
+          {\setunit{\printdelim{authortypedelim}}}}%
+     \iffieldundef{authortype}
+       {}
+       {\usebibmacro{authorstrg}%
+        \setunit{\printdelim{nameyeardelim}}}}%
+    {\global\undef\bbx@lasthash
+     \usebibmacro{labeltitle}%
+     \setunit*{\printdelim{nonameyeardelim}}}%
+     \ifboolexpr{%
+    test {\iffieldundef{origyear}} or test {\ifnameundef{translator}}%
+     }{\usebibmacro{date+extradate}}%
+  {\usebibmacro{origdate+extradate}}%
+  }
+
+  \DeclareBibliographyDriver{book}{%源来自standard.bbx文件
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+\usebibmacro{author/editor+others/translator+others}%
+\ifnameundef{author}{}{\setunit{\labelnamepunct}\newblock}%这一段用于去除作者不存在时多出的标点
+\usebibmacro{maintitle+title}%
+\iftoggle{bbx:gbstrict}{}{%
+\newunit
+\printlist{language}%
+\newunit\newblock%
+\usebibmacro{byauthor}%
+\newunit\newblock}%
+\newunit
+\printfield{edition}%
+\newunit
+\usebibmacro{byeditor+others}%
+\newunit\newblock%%
+\iftoggle{bbx:gbstrict}{}{%
+\iffieldundef{maintitle}%
+{\printfield{volume}%
+\printfield{part}}%
+{}%
+\newunit%
+\printfield{volumes}%
+\newunit\newblock%
+\usebibmacro{series+number}}%
+\newunit\newblock%
+\usebibmacro{publisher+location+date}%
+\usebibmacro{chapter+pages}%
+  \iffieldundef{url}{}{%当没有网址时也不输出
+  \usebibmacro{modifydate}}%带括号的修改或更新日期，
+\usebibmacro{doi+eprint+url}%从下面移动到上面来，因为gbt2015的url需直接放在页码后面。
+  \newunit\newblock%
+  \printfield{pagetotal}%
+  \newunit\newblock%
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  %\usebibmacro{doi+eprint+url}%
+  %\newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
 \DeclareBibliographyDriver{online}{%源来自standard.BBX
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/editor+others/translator+others}%
-  \ifnameundef{author}{}{\setunit{\labelnamepunct}\newblock}%这一段用于去除作者不存在时多出的标点
+\ifnameundef{author}{}{\setunit{\labelnamepunct}\newblock}%这一段用于去除作者不存在时多出的标点
   \usebibmacro{title}%
   \iftoggle{bbx:gbstrict}{}{%
-    \newunit%
-    \printlist{language}%
-    \newunit\newblock
-    \usebibmacro{byauthor}%
-    \newunit\newblock
-    \usebibmacro{byeditor+others}%
-    \newunit\newblock
-    \printfield{note}
-  }%
+  \newunit%
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{note}}%
   \newunit
   \printfield{version}%
   \newunit\newblock
-  % \printlist{organization}%
-  \printlist{institution}%
+ \printlist{institution}%
   \newunit\newblock
-  \ifboolexpr{%
-    test{\iffieldundef{day}}
-    and
-    test{\iffieldundef{endday}}
-    and
-    test{\iffieldundef{eventday}}%
-  }{\usebibmacro{date}}%
-  %{\usebibmacro{modifydate}}%修改或更新日期，为带括号的时间
+\ifboolexpr{%
+test{\iffieldundef{day}} and test{\iffieldundef{endday}} and test{\iffieldundef{eventday}}%
+}{\usebibmacro{date}}%
   \usebibmacro{url+urldate}%从下面移上来
   \newunit\newblock
   \iftoggle{bbx:eprint}
@@ -994,38 +1112,32 @@
   \usebibmacro{pageref}%
   \newunit\newblock
   \iftoggle{bbx:related}
-  {
-    \usebibmacro{related:init}%
-    \usebibmacro{related}
-  }
-  {}%
-  \usebibmacro{finentry}
-}
-\DeclareBibliographyDriver{patent}{%源来自standard.BBX
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+  \DeclareBibliographyDriver{patent}{%源来自standard.BBX
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author}%
-  \ifnameundef{author}{}{\setunit{\labelnamepunct}\newblock}%这一段用于去除作者不存在时多出的标点
+\ifnameundef{author}{}{\setunit{\labelnamepunct}\newblock}%这一段用于去除作者不存在时多出的标点
   %\usebibmacro{title}%
   \usebibmacro{patenttitle}%给出专利专用的标题输出
   \iftoggle{bbx:gbstrict}{}{%
-    \newunit%
-    \printlist{language}%
-    \newunit\newblock
-    \usebibmacro{byauthor}
-  }%
+  \newunit%
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}}%
   \newunit\newblock
   \printfield{type}%
   \setunit*{\addspace}%
   %\printfield{number}%已放到patenttitle中处理
   \iflistundef{location}
-  {}
-  {
-    \setunit*{\addspace}%
-    \printtext{%[parens]
-      \printlist[][-\value{listtotal}]{location}
-    }
-  }%
+    {}
+    {\setunit*{\addspace}%
+     \printtext{%[parens]
+       \printlist[][-\value{listtotal}]{location}}}%
   \newunit\newblock
   \usebibmacro{byholder}%
   \newunit\newblock
@@ -1040,13 +1152,10 @@
   \usebibmacro{pageref}%
   \newunit\newblock
   \iftoggle{bbx:related}
-  {
-    \usebibmacro{related:init}%
-    \usebibmacro{related}
-  }
-  {}%
-  \usebibmacro{finentry}
-}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
 \setlength{\bibitemsep}{2pt}
 \setlength{\bibnamesep}{0ex}
 \setlength{\bibinitsep}{0ex}
